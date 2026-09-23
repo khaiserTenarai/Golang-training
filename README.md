@@ -23,3 +23,10 @@ go run .
 ## Git Workflow
 
 This project demonstrates branching, merging, conflict resolution, and GitHub workflow.
+### git fetch
+
+Downloads updates from the remote repository without modifying the current working branch.
+
+### git pull
+
+Downloads remote updates and integrates them into the current branch.
