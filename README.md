@@ -1,5 +1,5 @@
 # Employee Management System
-A simple Employee Management System developed in GO.
+A simple Employee Management System built with Go.
 
 ## Features
 
