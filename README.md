@@ -19,3 +19,7 @@ A command-line Employee Management System built with Go, including employee mana
 
 '''bash
 go run .
+
+## Git Workflow
+
+This project demonstrates branching, merging, conflict resolution, and GitHub workflow.
