@@ -11,3 +11,21 @@ type Employee struct {
 func main() {
 	fmt.Println("Employee Management System")
 }
+
+func createEmployee() Employee {
+	return Employee{
+		ID:     1,
+		Name:   "John",
+		Salary: 50000,
+	}
+}
+
+func findEmployee(employees map[int]Employee, id int) {
+	employee, exists := employees[id]
+
+	if exists {
+		fmt.Println("Employee:", employee.Name)
+	} else {
+		fmt.Println("Employee not found")
+	}
+}
