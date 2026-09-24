@@ -64,7 +64,7 @@ Covers variables, data types, zero values, type conversion, operators, strings, 
 </details>
 
 <details>
-<summary><strong>📌 Day 3 — <em>(add your topic here)</em></strong></summary>
+<summary><strong>📌 Day 3 — <em>(Employee Management)</em></strong></summary>
 <br>
 
 _Add a short description of what Day 3 covers here._
