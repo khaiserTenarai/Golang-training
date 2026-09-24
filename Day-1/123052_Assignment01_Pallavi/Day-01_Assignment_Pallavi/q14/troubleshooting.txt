@@ -1,0 +1,41 @@
+Troubleshooting Report
+
+Error 1:
+Problem:
+The employee package name was written incorrectly.
+
+Incorrect:
+package employe
+
+Correct:
+package employee
+
+Fix:
+Changed the package name to employee.
+
+Command:
+go build ./...
+
+Result:
+Build successful.
+
+
+Error 2:
+Problem:
+The import path did not match the module name.
+
+Incorrect:
+wrongapp/internal/employee
+
+Correct:
+q12/internal/employee
+
+Fix:
+Changed the import path to match the module name.
+
+Commands:
+go mod tidy
+go build ./...
+
+Result:
+Build successful.
