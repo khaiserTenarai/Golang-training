@@ -1,0 +1,128 @@
+Q14 - TROUBLESHOOTING REPORT
+============================
+
+Objective:
+Intentionally introduce two build/configuration errors, identify the errors,
+and document how they were fixed.
+
+
+ERROR 1: Incorrect Package Name
+-------------------------------
+
+Problem:
+When I executed the following command:
+
+go run main.go
+
+I received this error:
+
+package command-line-arguments is not a main package
+
+Cause:
+The main.go file was not using the correct package declaration.
+
+For a Go application that contains the main() function, the package
+must be declared as:
+
+package main
+
+Fix:
+I opened main.go and changed the package declaration to:
+
+package main
+
+After fixing the package name, I ran:
+
+go run main.go
+
+The program executed successfully.
+
+
+ERROR 2: Incorrect Directory/Path
+---------------------------------
+
+Problem:
+I executed:
+
+go run ./cmd/app
+
+I received the following error:
+
+stat C:\Users\Pallavi.K\Documents\GO_Assignment\
+Day-1_Assignment_Pallavi\Day-01_Assignment_Pallavi\q14\cmd\app:
+directory not found
+
+Cause:
+The cmd/app directory did not exist inside the q14 project.
+
+The q14 project contained main.go directly in the q14 folder.
+
+Fix:
+Instead of running:
+
+go run ./cmd/app
+
+I used:
+
+go run main.go
+
+or:
+
+go run .
+
+The program then executed from the correct directory.
+
+
+VERIFICATION
+------------
+
+After fixing the errors, I verified the project using the following
+Go commands:
+
+1. Build:
+
+go build ./...
+
+Result:
+Build completed successfully.
+
+
+2. Test:
+
+go test ./...
+
+Result:
+?    Day-1_Assignment_Pallavi/q14    [no test files]
+
+
+3. Format:
+
+go fmt ./...
+
+Result:
+main.go
+
+
+4. Vet:
+
+go vet ./...
+
+Result:
+No errors were reported.
+
+
+CONCLUSION
+----------
+
+Two configuration/build issues were identified and fixed:
+
+1. Incorrect package declaration:
+   Changed the package to "package main".
+
+2. Incorrect directory path:
+   The command "go run ./cmd/app" was replaced with
+   "go run main.go" or "go run ." because main.go was directly
+   inside the q14 folder.
+
+After fixing both issues, the Go project successfully passed
+build, test, formatting, and vet checks.
