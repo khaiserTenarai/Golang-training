@@ -1,0 +1,19 @@
+Go Toolchain Practice  
+
+Execute:  
+
+go run  
+
+go build  
+
+go fmt  
+
+go vet  
+
+go test  
+
+go run - Compiles and executes one or more Go main files directly in a temporary directory without saving an executable binary to your current working directory.
+go build - Compiles Go packages and their dependencies into a standalone binary file (or verifies that packages compile cleanly without producing output).
+go fmt - Standardizes code style and formatting
+go vet - Catches common code defects via static analysis
+go test - Runs unit tests, benchmarks, and examples
