@@ -10,7 +10,8 @@ type Employee struct {
 }
 
 func main() {
-	fmt.Println("Employee Management Portal")
+	fmt.Println("Employee Management Application")
+
 }
 
 func createEmployee() Employee {
