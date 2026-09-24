@@ -1,33 +1,25 @@
 package main
 
 import (
-	"fmt"
-	"strconv"
+    "fmt"
+    "strconv"
 )
 
+type Employee struct {
+    ID   int
+    Name string
+}
 
-func main(){
+func main() {
+    fmt.Println("=== Employee Management System ===")
 
-	fmt.Println("\n****************************************************")
-	fmt.Println("Type-conversion program for string → integer → float. ")
-	fmt.Println("******************************************************")
+    strVal := "101"
+    empID, err := strconv.Atoi(strVal)
+    if err != nil {
+        fmt.Println("Error converting Employee ID")
+        return
+    }
 
-	// String to Integer conversion
-	strVal := "123"
-	fmt.Println("Original String Value: ", strVal)
-	intVal, err := strconv.Atoi(strVal)
-	if err != nil{
-		fmt.Println("Error while converting to Integer")
-		return
-	}
-	fmt.Println("Converted Integer Value: ", intVal)
-
-	// Integer to Float conversion
-	floatVal := float64(intVal)
-	fmt.Println("Converted Float64 Value:", floatVal)
-
-	fmt.Println("Thank You")
-
-	fmt.Println("Thank You Again")
-
+    emp := Employee{ID: empID, Name: "Alice"}
+    fmt.Printf("Employee Created: ID=%d, Name=%s\n", emp.ID, emp.Name)
 }
