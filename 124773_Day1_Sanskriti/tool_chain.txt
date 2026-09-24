@@ -1,0 +1,37 @@
+### `go run`
+
+* **Purpose:** Compiles and immediately executes one or more Go source files without leaving an executable file in your working directory.
+* **Use Case:** Quick testing, local development scripts, and rapid prototyping.
+* **Example:** `go run main.go`
+
+---
+
+### `go build`
+
+* **Purpose:** Compiles the specified Go package and its dependencies into a standalone binary executable file.
+* **Use Case:** Creating production binaries or verifying that a package compiles cleanly without running it.
+* **Example:** `go build -o myapp main.go`
+
+---
+
+### `go fmt`
+
+* **Purpose:** Automatically reformats Go source code files according to standard Go formatting rules (`gofmt`).
+* **Use Case:** Ensuring consistent code style across a codebase and enforcing official language guidelines before committing code.
+* **Example:** `go fmt ./...`
+
+---
+
+### `go vet`
+
+* **Purpose:** Analyzes Go source code for subtle errors, suspicious constructs, or common mistakes that are syntactically valid but likely bugs (e.g., unreachable code, incorrect printf format strings).
+* **Use Case:** Static analysis during continuous integration (CI) or pre-commit checks.
+* **Example:** `go vet ./...`
+
+---
+
+### `go test`
+
+* **Purpose:** Automates the execution of test functions (functions named `TestXxx` in `*_test.go` files) and benchmarks within the target packages.
+* **Use Case:** Running unit tests, integration tests, and checking code coverage.
+* **Example:** `go test -v ./...`
