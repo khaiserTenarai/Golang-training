@@ -1,0 +1,8 @@
+github.com/brianvoe/gofakeit/v6 v6.28.0 h1:Xib46XXuQfmlLS2EXRuJpqcw8St6qSZz75OUo0tgAW4=
+github.com/brianvoe/gofakeit/v6 v6.28.0/go.mod h1:Xj58BMSnFqcn/fAQeSK+/PLtC5kSb7FJIq4JyGa8vEs=
+
+
+
+//go get github.com/brianvoe/gofakeit/v6
+//the demo names are coming from the gofakekit package
+//primary purpose is security and consistency
