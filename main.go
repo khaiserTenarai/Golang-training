@@ -6,6 +6,7 @@ type Employee struct {
 	ID     int
 	Name   string
 	Salary float64
+	Email  string
 }
 
 func main() {
@@ -17,6 +18,7 @@ func createEmployee() Employee {
 		ID:     1,
 		Name:   "John",
 		Salary: 50000,
+		Email:  "john@example.com",
 	}
 }
 
