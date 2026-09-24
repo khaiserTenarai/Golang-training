@@ -1,0 +1,9 @@
+APP := employeeapp
+.PHONY: run build test fmt vet clean all
+all: fmt vet test build
+run:   ; go run ./cmd/$(APP)
+build: ; mkdir -p bin && go build -o bin/$(APP) ./cmd/$(APP)
+test:  ; go test -v -cover ./...
+fmt:   ; go fmt ./...
+vet:   ; go vet ./...
+clean: ; rm -rf bin
