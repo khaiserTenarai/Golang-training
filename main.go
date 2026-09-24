@@ -29,3 +29,8 @@ func findEmployee(employees map[int]Employee, id int) {
 		fmt.Println("Employee not found")
 	}
 }
+func menu() {
+	fmt.Println("1. Create Employee")
+	fmt.Println("2. Find Employee")
+	fmt.Println("3. Exit")
+}
