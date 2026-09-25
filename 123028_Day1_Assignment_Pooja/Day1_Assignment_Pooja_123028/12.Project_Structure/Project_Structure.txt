@@ -1,0 +1,6 @@
+cmd :
+	Contains the application's executable/entry-point code, usually main.go.
+internal:
+	Contains private application code that should not be imported from outside the allowed project tree.
+pkg:
+	Contains reusable packages that can be shared/imported by other projects.

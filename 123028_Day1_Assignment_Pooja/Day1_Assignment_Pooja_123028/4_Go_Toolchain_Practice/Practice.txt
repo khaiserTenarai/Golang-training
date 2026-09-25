@@ -1,0 +1,10 @@
+ go run:
+   Compiles and runs the Go program directly without creating a permanent executable. 
+go build:
+ Compiles the Go program and creates an executable file.                            
+go fmt:
+    Automatically formats Go source code according to Go's standard formatting style.  
+go vet:
+    Checks your code for suspicious constructs and possible mistakes.                  
+go test:
+   Runs the tests written in your Go test files.                                     
