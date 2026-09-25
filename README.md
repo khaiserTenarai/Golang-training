@@ -1,12 +1,12 @@
 <div align="center">
 
 <a href="https://github.com/khaiserTenarai/Golang-training">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&pause=1000&color=00ADD8&center=true&vCenter=true&width=600&lines=Golang+Training+%F0%9F%9A%80;Day+1+%E2%80%A2+Day+2+%E2%80%A2+Day+3;Naman+Kumar" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&pause=1000&color=00ADD8&center=true&vCenter=true&width=600&lines=Golang+Training+%F0%9F%9A%80;Day+1+%E2%80%A2+Day+2+%E2%80%A2+Day+3+%E2%80%A2+Day+4;Naman+Kumar" alt="Typing SVG" />
 </a>
 
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
 ![Status](https://img.shields.io/badge/status-in--progress-yellow?style=for-the-badge)
-![Days](https://img.shields.io/badge/days--completed-3%2F3-brightgreen?style=for-the-badge)
+![Days](https://img.shields.io/badge/days--completed-4%2F4-brightgreen?style=for-the-badge)
 
 </div>
 
@@ -41,8 +41,24 @@ Golang-training/
 │   └── day2/
 │       ├── cmd/          # Runnable examples: variables, datatypes, loops, etc.
 │       └── internal/     # Supporting packages: employee, loops, salary, textstats
-└── Day3NamanKumar/
-    └── ...                # Day 3 assignment files
+├── Day3NamanKumar/
+│   └── employee-project/
+│       ├── employee.go
+│       ├── report.go
+│       ├── main.go
+│       └── go.mod
+└── Day4/
+    └── employee-management/
+        └── employee-management/
+            ├── main.go
+            ├── go.mod
+            ├── model/
+            │   └── employee.go
+            ├── service/
+            │   └── employee.go
+            └── utility/
+                ├── string.go
+                └── validation.go
 ```
 
 ## 🗓️ Daily Breakdown
@@ -64,10 +80,18 @@ Covers variables, data types, zero values, type conversion, operators, strings, 
 </details>
 
 <details>
-<summary><strong>📌 Day 3 — <em>(Employee Management)</em></strong></summary>
+<summary><strong>📌 Day 3 — Employee Management (Intro)</strong></summary>
 <br>
 
-_Add a short description of what Day 3 covers here._
+A small Go project (`employee-project`) that models employees and generates simple reports, introducing struct-based data modeling and basic package organization.
+
+</details>
+
+<details>
+<summary><strong>📌 Day 4 — Employee Management (Structured)</strong></summary>
+<br>
+
+A more structured employee management project, split into layers: `model` for data structures, `service` for business logic, and `utility` for helper functions like string handling and validation.
 
 </details>
 
@@ -77,6 +101,13 @@ Each exercise folder has its own `go.mod`. To run an example:
 
 ```bash
 cd Day1NamanKumar/go-day1/<folder-name>
+go run main.go
+```
+
+For Day 4:
+
+```bash
+cd Day4/employee-management/employee-management
 go run main.go
 ```
 
