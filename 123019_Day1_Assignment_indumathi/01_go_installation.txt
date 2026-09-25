@@ -1,0 +1,23 @@
+
+setup notes:
+
+1. type "go version" in the terminal to make sure go is actually installed.
+2. type "go env" to see all the background settings.
+
+PS C:\Users\Gokul.R\Downloads\Day1\Day1> go version
+go version go1.27.1 windows/amd64
+PS C:\Users\Gokul.R\Downloads\Day1\Day1> go env
+set AR=ar
+set CC=gcc
+set CGO_CFLAGS=-O2 -g
+set CGO_CPPFLAGS=
+set CGO_CXXFLAGS=-O2 -g
+
+important things to look for in that list:
+GOROOT - where the main go engine lives on my computer.
+GOPATH - the workspace where go saves extra packages i download.
+
+PS C:\Users\Gokul.R\Downloads\Day1\Day1> go env GOROOT
+C:\Program Files\Go
+PS C:\Users\Gokul.R\Downloads\Day1\Day1> go env GOPATH
+C:\Users\Gokul.R\go

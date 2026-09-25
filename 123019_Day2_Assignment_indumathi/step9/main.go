@@ -1,0 +1,22 @@
+package main
+
+import "fmt"
+
+func main() {
+	sales := [12]float64{
+		10000, 12000, 15000, 11000,
+		13000, 16000, 14000, 17000,
+		18000, 15000, 19000, 20000,
+	}
+
+	var total float64
+
+	for _, sale := range sales {
+		total += sale
+	}
+
+	average := total / 12
+
+	fmt.Println("Total Sales:", total)
+	fmt.Println("Average Sales:", average)
+}
