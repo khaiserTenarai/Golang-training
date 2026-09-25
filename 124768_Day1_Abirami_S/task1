@@ -1,0 +1,54 @@
+PS C:\Users\abirami.s\Desktop\GO lang training\Day1_Assignment> go version
+go version go1.27.1 windows/amd64
+PS C:\Users\abirami.s\Desktop\GO lang training\Day1_Assignment> go env
+set AR=ar
+set CC=gcc
+set CGO_CFLAGS=-O2 -g
+set CGO_CPPFLAGS=
+set CGO_CXXFLAGS=-O2 -g
+set CGO_ENABLED=0
+set CGO_FFLAGS=-O2 -g
+set CGO_LDFLAGS=-O2 -g
+set CXX=g++
+set GCCGO=gccgo
+set GO111MODULE=
+set GOAMD64=v1
+set GOARCH=amd64
+set GOAUTH=netrc
+set GOBIN=C:\Users\abirami.s\go\bin
+set GOCACHE=C:\Users\abirami.s\AppData\Local\go-build
+set GOCACHEPROG=
+set GODEBUG=
+set GOENV=C:\Users\abirami.s\AppData\Roaming\go\env
+set GOEXE=.exe
+set GOEXPERIMENT=
+set GOFIPS140=off
+set GOFLAGS=
+set GOGCCFLAGS=-m64 -fno-caret-diagnostics -Qunused-arguments -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=C:\Users\abirami.s\AppData\Local\Temp\go-build2146354958=/tmp/go-build -gno-record-gcc-switches
+set GOHOSTARCH=amd64
+set GOHOSTOS=windows
+set GOINSECURE=
+set GOMOD=NUL
+set GOMODCACHE=C:\Users\abirami.s\go\pkg\mod
+set GONOPROXY=
+set GONOSUMDB=
+set GOOS=windows
+set GOPACKAGESDRIVER=
+set GOPATH=C:\Users\abirami.s\go
+set GOPRIVATE=
+set GOPROXY=https://proxy.golang.org,direct
+set GOROOT=C:\Program Files\Go
+set GOSUMDB=sum.golang.org
+set GOTELEMETRY=local
+set GOTELEMETRYDIR=C:\Users\abirami.s\AppData\Roaming\go\telemetry
+set GOTMPDIR=
+set GOTOOLCHAIN=auto
+set GOTOOLDIR=C:\Program Files\Go\pkg\tool\windows_amd64
+set GOVCS=
+set GOVERSION=go1.27.1
+set GOWORK=
+set PKG_CONFIG=pkg-config
+PS C:\Users\abirami.s\Desktop\GO lang training\Day1_Assignment> go env GOROOT
+C:\Program Files\Go
+PS C:\Users\abirami.s\Desktop\GO lang training\Day1_Assignment> go env GOPATH
+C:\Users\abirami.s\go

@@ -1,0 +1,9 @@
+go fmt ./...
+
+go vet ./...
+
+go test ./...
+
+go build .
+
+go run .

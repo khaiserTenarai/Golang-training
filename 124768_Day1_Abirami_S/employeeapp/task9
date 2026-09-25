@@ -1,0 +1,33 @@
+PS C:\Users\abirami.s\Desktop\GO lang training\Day1_Assignment\employeeapp> git init
+Initialized empty Git repository in C:/Users/abirami.s/Desktop/GO lang training/Day1_Assignment/employeeapp/.git/
+PS C:\Users\abirami.s\Desktop\GO lang training\Day1_Assignment\employeeapp> git add .
+warning: in the working copy of 'go.mod', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'go.sum', LF will be replaced by CRLF the next time Git touches it
+PS C:\Users\abirami.s\Desktop\GO lang training\Day1_Assignment\employeeapp> git commit -m "Employee App"        
+[master (root-commit) ee3b237] Employee App
+ Committer: Abirami S <Abirami.S@tenarai.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 5 files changed, 50 insertions(+)
+ create mode 100644 employee/employee.go
+ create mode 100644 go.mod
+ create mode 100644 go.sum
+ create mode 100644 main.go
+ create mode 100644 utils/utils.go
+PS C:\Users\abirami.s\Desktop\GO lang training\Day1_Assignment\employeeapp> git tag v1.0.0
+PS C:\Users\abirami.s\Desktop\GO lang training\Day1_Assignment\employeeapp> git tag v1.1.0
+PS C:\Users\abirami.s\Desktop\GO lang training\Day1_Assignment\employeeapp> git tag v1.1.1
+PS C:\Users\abirami.s\Desktop\GO lang training\Day1_Assignment\employeeapp> git tag
+v1.0.0
+v1.1.0
+v1.1.1
