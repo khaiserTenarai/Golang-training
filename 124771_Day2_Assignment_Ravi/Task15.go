@@ -11,15 +11,27 @@ type Employee struct {
 	Salary     float64
 }
 
-var employees []Employee
-var employeeMap = make(map[int]Employee)
+var employees = map[int]Employee{
+	1: {
+		ID:         1,
+		Name:       "Ravi Ranjan",
+		Department: "Development",
+		Salary:     75000,
+	},
+	2: {
+		ID:         2,
+		Name:       "Amit",
+		Department: "Devops",
+		Salary:     65000,
+	},
+}
 
 func main() {
 
 	for {
 		fmt.Println("\n*** Employee Management System ***")
 		fmt.Println("1. Add Employee")
-		fmt.Println("2. List Employees")
+		fmt.Println("2. View Employees")
 		fmt.Println("3. Find Employee")
 		fmt.Println("4. Update Employee")
 		fmt.Println("5. Delete Employee")
@@ -34,10 +46,10 @@ func main() {
 			addEmployee()
 
 		case 2:
-			listEmployees()
+			listAllEmployees()
 
 		case 3:
-			findEmployee()
+			findEmployeeById()
 
 		case 4:
 			updateEmployee()
@@ -57,36 +69,41 @@ func main() {
 
 func addEmployee() {
 	var employee Employee
+
 	fmt.Print("Enter ID: ")
 	fmt.Scan(&employee.ID)
 
-	if _, exists := employeeMap[employee.ID]; exists {
+	// Check if ID already exists
+	if _, exists := employees[employee.ID]; exists {
 		fmt.Println("Employee ID already exists!")
 		return
 	}
 
 	fmt.Print("Enter Name: ")
 	fmt.Scan(&employee.Name)
+
 	fmt.Print("Enter Department: ")
 	fmt.Scan(&employee.Department)
+
 	fmt.Print("Enter Salary: ")
 	fmt.Scan(&employee.Salary)
 
-	employees = append(employees, employee)
-
-	employeeMap[employee.ID] = employee
+	// Add employee to map
+	employees[employee.ID] = employee
 
 	fmt.Println("Employee added successfully!")
 }
 
-func listEmployees() {
+func listAllEmployees() {
+
+	fmt.Println("View")
 
 	if len(employees) == 0 {
 		fmt.Println("No employees found!")
 		return
 	}
 
-	fmt.Println("\n Employee List ")
+	fmt.Println("\nEmployee List")
 
 	for _, employee := range employees {
 		fmt.Printf(
@@ -99,14 +116,14 @@ func listEmployees() {
 	}
 }
 
-func findEmployee() {
+func findEmployeeById() {
 
 	var id int
 
 	fmt.Print("Enter Employee ID: ")
 	fmt.Scan(&id)
 
-	employee, exists := employeeMap[id]
+	employee, exists := employees[id]
 
 	if !exists {
 		fmt.Println("Employee not found!")
@@ -123,10 +140,11 @@ func findEmployee() {
 
 func updateEmployee() {
 	var id int
+
 	fmt.Print("Enter Employee ID: ")
 	fmt.Scan(&id)
 
-	employee, exists := employeeMap[id]
+	employee, exists := employees[id]
 
 	if !exists {
 		fmt.Println("Employee not found!")
@@ -142,14 +160,8 @@ func updateEmployee() {
 	fmt.Print("Enter new Salary: ")
 	fmt.Scan(&employee.Salary)
 
-	employeeMap[id] = employee
-
-	for i := 0; i < len(employees); i++ {
-		if employees[i].ID == id {
-			employees[i] = employee
-			break
-		}
-	}
+	// Update employee in the map
+	employees[id] = employee
 
 	fmt.Println("Employee updated successfully!")
 }
@@ -160,25 +172,14 @@ func deleteEmployee() {
 	fmt.Print("Enter Employee ID: ")
 	fmt.Scan(&id)
 
-	_, exists := employeeMap[id]
+	_, exists := employees[id]
 
 	if !exists {
 		fmt.Println("Employee not found!")
 		return
 	}
 
-	delete(employeeMap, id)
-	for i := 0; i < len(employees); i++ {
-		if employees[i].ID == id {
-
-			employees = append(
-				employees[:i],
-				employees[i+1:]...,
-			)
-
-			break
-		}
-	}
+	delete(employees, id)
 
 	fmt.Println("Employee deleted successfully!")
 }
