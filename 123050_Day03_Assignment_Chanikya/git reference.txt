@@ -1,0 +1,483 @@
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2> cd company
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git init
+Initialized empty Git repository in C:/Users/M.Chanikya/Downloads/Overture_Project/data/GO/Assignment2/company/.git/
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        employee/
+        go.mod
+        main.go
+        utils/
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git add README.md
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        employee/
+        go.mod
+        main.go
+        utils/
+PS C:\Users\M.Changit statusoads\Overture_Project\data\GO\Ass
+On branch master> 
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   README.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        employee/
+        go.mod
+        main.go
+        utils/
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git diff
+diff --git a/README.md b/README.md
+index 5818570..5e3d42b 100644
+--- a/README.md
++++ b/README.md
+@@ -24,4 +24,7 @@ Git-based development workflow
+ Requirements
+ Go 1.20 or later
+ 
+-Git
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git diff --staged
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..5818570
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,27 @@
++# Company Employee Management
++
++A simple Go project demonstrating employee management and ut
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git add .
+warning: in the working copy of 'go.mod', LF will be replaced by CRLF the next time Git touches it
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "initialize Go company project"       
+[master (root-commit) 13e5b98] initialize Go company project
+ Committer: M Chanikya <M.Chanikya@infogain.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 5 files changed, 84 insertions(+)
+ create mode 100644 README.md
+ create mode 100644 employee/employee.go
+ create mode 100644 go.mod
+ create mode 100644 main.go
+ create mode 100644 utils/utils.go
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git log --oneline
+13e5b98 (HEAD -> master) initialize Go company project
+PS C:\Users\M.Changit add employee/employee.goect\data\GO\Assignment2\company> 
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "added a single line of code in employee" 
+[master b8db974] added a single line of code in employee
+ Committer: M Chanikya <M.Chanikya@infogain.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git add employee/employee.go
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "added a another line of code in employee"
+[master b11496c] added a another line of code in employee
+ Committer: M Chanikya <M.Chanikya@infogain.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git add employee/employee.go                           
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "modified a line of code in employee"    
+[master 0af564c] modified a line of code in employee
+ Committer: M Chanikya <M.Chanikya@infogain.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git add main.go                                    
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "modified main.go"                   
+[master ee2258d] modified main.go
+ Committer: M Chanikya <M.Chanikya@infogain.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "modified main.go"                   
+[master ee2258d] modified main.go
+ Committer: M Chanikya <M.Chanikya@infogain.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+                                                                               git log --oneline --decoratertions(+)
+ee2258d (HEAD -> master) modified main.go_Project\data\GO\Assignment2\company> 
+0af564c modified a line of code in employee
+b11496c added a another line of code in employee
+b8db974 added a single line of code in employee
+13e5b98 initialize Go company project
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git log --oneline
+ee2258d (HEAD -> master) modified main.go
+0af564c modified a line of code in employee
+b11496c added a another line of code in employee
+b8db974 added a single line of code in employee
+13e5b98 initialize Go company project
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git show 13e5b98    
+commit 13e5b98be04416e1e91f13a823460696253a7506
+Author: M Chanikya <M.Chanikya@infogain.com>
+Date:   Thu Sep 24 07:56:27 2026 +0530
+
+    initialize Go company project
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..5e3d42b
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git show HEAD
+commit ee2258dbdfce1d26af34be90767179cac449bd04 (HEAD -> master)
+Author: M Chanikya <M.Chanikya@infogain.com>
+Date:   Thu Sep 24 08:07:43 2026 +0530
+
+    modified main.go
+
+diff --git a/main.go b/main.go
+index 304be37..32eac71 100644
+--- a/main.go
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> echo "temporary change" >> README.md
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git diff
+diff --git a/README.md b/README.md
+index 5e3d42b..e064a7a 100644
+Binary files a/README.md and b/README.md differ
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git restore README.md
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git status
+On branch master
+nothing to commit, working tree clean
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git restore README.md
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git restore --staged README.md
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git branch -M main
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git switch -c feature/employee
+Switched to a new branch 'feature/employee'
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git branch
+* feature/employee
+  main
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git add .
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "enhance employee details"      
+On branch feature/employee
+nothing to commit, working tree clean
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git switch main
+Switched to branch 'main'
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git switch -c feature/report
+Switched to a new branch 'feature/report'
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git add .
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "feat: add employee report"
+On branch feature/report
+nothing to commit, working tree clean
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git log --oneline --all --decorate --graph
+* ee2258d (HEAD -> feature/report, main, feature/employee) modified main.go
+* 0af564c modified a line of code in employee
+* b11496c added a another line of code in employee
+* b8db974 added a single line of code in employee
+* 13e5b98 initialize Go company project
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git switch main
+Switched to branch 'main'
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git merge feature/employee
+Already up to date.
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git log --oneline --graph --decorate --all
+* ee2258d (HEAD -> main, feature/report, feature/employee) modified main.go
+* 0af564c modified a line of code in employee
+* b11496c added a another line of code in employee
+* b8db974 added a single line of code in employee
+* 13e5b98 initialize Go company project
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git add README.md
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "docs: update project description"
+[main 473d950] docs: update project description
+ Committer: M Chanikya <M.Chanikya@infogain.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 git switch feature/report
+>> C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> 
+Switched to branch 'feature/report'
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git switch feature/report
+>> 
+Already on 'feature/report'
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git add README.md
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "docs: update report documentation"
+[feature/report a730895] docs: update report documentation
+ Committer: M Chanikya <M.Chanikya@infogain.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "docs: update report documentation"
+[feature/report a730895] docs: update report documentation
+ Committer: M Chanikya <M.Chanikya@infogain.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git switch main
+Switched to branch 'main'
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git merge feature/report
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git status
+On branch main
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git status
+On branch main
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git add README.md
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git commit -m "merge: resolve report documentation conflict"
+>> 
+[main 4b8783d] merge: resolve report documentation conflict
+ Committer: M Chanikya <M.Chanikya@infogain.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git status
+On branch main
+nothing to commit, working tree clean
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git log --oneline --graph --decorate --all
+*   4b8783d (HEAD -> main) merge: resolve report documentation conflict
+|\  
+| * a730895 (feature/report) docs: update report documentation
+* | 473d950 docs: update project description
+|/  
+* ee2258d (feature/employee) modified main.go
+* 0af564c modified a line of code in employee
+* b11496c added a another line of code in employee
+* b8db974 added a single line of code in employee
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git remote add origin https://github.com/mchanikya-code/company.git
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git remote -v
+origin  https://github.com/mchanikya-code/company.git (fetch)
+origin  https://github.com/mchanikya-code/company.git (push)
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git switch main
+Already on 'main'
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git push -u origin main
+Enumerating objects: 33, done.
+Counting objects: 100% (33/33), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (27/27), done.
+Writing objects: 100% (33/33), 3.52 KiB | 277.00 KiB/s, done.
+Total 33 (delta 11), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (11/11), done.
+To https://github.com/mchanikya-code/company.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git push -u origin feature/employee
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'feature/employee' on GitHub by visiting:
+remote:      https://github.com/mchanikya-code/company/pull/new/feature/employee
+remote: 
+To https://github.com/mchanikya-code/company.git
+ * [new branch]      feature/employee -> feature/employee
+branch 'feature/employee' set up to track 'origin/feature/employee'.
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git push -u origin feature/report
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'feature/report' on GitHub by visiting:
+remote:      https://github.com/mchanikya-code/company/pull/new/feature/report
+remote: 
+To https://github.com/mchanikya-code/company.git
+ * [new branch]      feature/report -> feature/report
+branch 'feature/report' set up to track 'origin/feature/report'.
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git push -u origin feature/report
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'feature/report' on GitHub by visiting:
+remote:      https://github.com/mchanikya-code/company/pull/new/feature/report
+remote: 
+To https://github.com/mchanikya-code/company.git
+ * [new branch]      feature/report -> feature/report
+branch 'feature/report' set up to track 'origin/feature/report'.
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git fetch origin
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git branch -r
+>> 
+  origin/HEAD -> origin/main
+  origin/feature/employee
+  origin/feature/report
+  origin/main
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git diff main origin/mainPS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git fetch origin
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git pull origin main
+From https://github.com/mchanikya-code/company
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git fetch origin
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git pull origin main
+From https://github.com/mchanikya-code/company
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git switch main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git tag -a v1.0.0 -m "Release version 1.0.0"
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git tag
+v1.0.0
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git show v1.0.0
+tag v1.0.0
+Tagger: M Chanikya <M.Chanikya@infogain.com>
+Date:   Thu Sep 24 09:43:14 2026 +0530
+
+Release version 1.0.0
+
+commit 4b8783d17f726679a6186522959d10c520d0900b (HEAD -> main, tag: v1.0.0, origin/main, origin/HEAD)
+Merge: 473d950 a730895
+Author: M Chanikya <M.Chanikya@infogain.com>
+:
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git push origin v1.0.0
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1), done.
+Writing objects: 100% (1/1), 172 bytes | 172.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/mchanikya-code/company.git
+ * [new tag]         v1.0.0 -> v1.0.0
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git branch
+  feature/employee
+  feature/report
+* main
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git log --oneline --graph --decorate --all
+*   4b8783d (HEAD -> main, tag: v1.0.0, origin/main, origin/HEAD) merge: resolve report documentation conflict
+|\  
+| * a730895 (origin/feature/report, feature/report) docs: update report documentation
+* | 473d950 docs: update project description
+|/  
+* ee2258d (origin/feature/employee, feature/employee) modified main.go
+* 0af564c modified a line of code in employee
+* b11496c added a another line of code in employee
+* b8db974 added a single line of code in employee
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git tag
+v1.0.0
+PS C:\Users\M.Chanikya\Downloads\Overture_Project\data\GO\Assignment2\company> git remote -v
+origin  https://github.com/mchanikya-code/company.git (fetch)
+origin  https://github.com/mchanikya-code/company.git (push

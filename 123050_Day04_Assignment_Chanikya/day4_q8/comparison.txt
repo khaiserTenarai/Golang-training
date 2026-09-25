@@ -1,0 +1,21 @@
+Recursive
+Function calls itself.
+
+Uses base case.
+
+Easy to understand.
+
+Higher memory usage.
+
+Slower for large inputs.
+
+Iterative
+Uses loops.
+
+No recursive function calls.
+
+Uses less memory.
+
+Faster for large inputs.
+
+Usually more efficient.

@@ -1,0 +1,57 @@
+## Error 1: Unused Import
+Go will not compile if you import a package but do not use it in your code.
+## incorrected Code
+
+package main
+import (
+	"fmt"
+	"math" // Error: This is imported but never used
+)
+func main() {
+	fmt.Println("Welcome to Go!")
+}
+
+##  The Error Message
+
+./main.go:5:2: imported and not used: "math"
+
+## The Fix
+Remove the unused "math" import line, or use it in your code.
+
+package main
+import (
+	"fmt"
+)
+func main() {
+	fmt.Println("Welcome to Go!")
+}
+
+
+Error 2: Re-declaring an Existing Variable
+##  The incorrect Code
+
+package main
+import "fmt"
+func main() {
+	age := 20
+	age := 21 
+	fmt.Println(age)
+}
+
+## 🔍 The Error Message
+
+./main.go:9:6: no new variables on left side of :=
+
+## The Fix
+Use the standard assignment operator = to update an existing variable.
+
+package main
+import "fmt"
+func main() {
+	age := 20 // Creates the variable
+
+	age = 21 // Updates the variable
+	fmt.Println(age)
+}
+
+
