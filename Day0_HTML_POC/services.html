@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- This title will be displayed on browser tab -->
+    <title>Services | AutoMob-Mechanic</title>
+
+    <!-- Here I am applying basic CSS to look my web page better..(Internal-CSS) -->
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        h1 {
+            background: #1f4e79;
+            color: white;
+            padding: 15px;
+            margin: 0;
+        }
+
+
+        /* Navigation bar */
+        nav {
+            background-color: #d9eaf7;
+            padding: 15px 25px;
+            display: flex;
+            gap: 25px;
+        }
+
+        /* Navigation links */
+        nav a {
+            color: #1f4e79;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .services {
+            display: flex;
+            gap: 20px;
+        }
+
+        .service {
+            width: 30%;
+            text-align: center;
+        }
+
+        .service img {
+            width: 100%;
+            height: 150px;
+        }
+
+        button {
+            background: #f28c28;
+            color: white;
+            border: 0;
+            padding: 8px;
+        }
+
+        footer {
+            background: #1f4e79;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        img {
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>AutoMob-Mechanic</h1>
+    <!-- navigation links -->
+
+    <nav>
+        <a href="./home.html">Home</a>
+        <a href="./services.html">Services</a>
+        <a href="./booking.html">Booking</a>
+        <a href="mailto:contact@automob.co.in">contact@automob.co.in</a>
+        <a href="tel:999 999 9999">999 999 9999</a>
+    </nav>
+
+    <hr>
+
+    <main>
+        <h2>Our Services</h2>
+
+        <p>Our representatives are professionally trained and skilled with latest and futuristic techniques to provide
+            the best quality service.</p>
+
+        <p>At AutoMob-Mechanic, we provide a high class service to the customers for their happy and memorable driving
+            experience.</p>
+
+        <!-- Three services shown side by side -->
+
+         <!-- we can create table also to show it side-by-side .. But for better convinience I am createing containner using div & section tags -->
+        <section class="services">
+
+            <div class="service">
+                <img src="./resources/preventive maintainance.jpeg" alt="Preventive Maintenance">
+                <h3>Preventive Maintenance Service</h3>
+                <p>Periodically check and keep your car running.</p>
+                <b>20% Off</b>
+                <br><br>
+                <a href="./preventive-maintenance-service.html">
+                    <button>More Details</button>
+                </a>
+            </div>
+
+            <div class="service">
+                <img src="./resources/body_repair_service.webp" alt="Body Repair">
+                <h3>Body Repair Service</h3>
+                <p>Full chassis body repair provided by the experts.</p>
+                <b>10% Off</b>
+                <br><br>
+                <a href="./body-repair-service.html">
+                    <button>More Details</button>
+                </a>
+            </div>
+
+            <div class="service">
+                <img src="./resources/car_care_service.jpeg" alt="Car Care">
+                <h3>Car Care Service</h3>
+                <p>Get your car sparkling clean in just minutes.</p>
+                <b>15% Off</b>
+                <br><br>
+                <a href="./car-care-service.html">
+                    <button>More Details</button>
+                </a>
+            </div>
+
+        </section>
+    </main>
+
+    <hr>
+
+    <footer>
+        Copyright &copy; 2020 AutoMob-Mechanic. All Rights Reserved.
+    </footer>
+
+</body>
+
+</html>

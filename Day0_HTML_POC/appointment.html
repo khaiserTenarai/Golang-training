@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Appointment | AutoMob-Mechanic</title>
+    <!-- Here I am applying basic CSS to look my web page better..(Internal-CSS) -->
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        h1 {
+            background: #1f4e79;
+            color: white;
+            margin: 0;
+            padding: 18px 25px;
+        }
+
+        /* Navigation bar */
+        nav {
+            background-color: #d9eaf7;
+            padding: 15px 25px;
+            display: flex;
+            gap: 25px;
+        }
+
+        /* Navigation links */
+        nav a {
+            color: #1f4e79;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        main {
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        textarea {
+            padding: 7px;
+            margin-top: 5px;
+        }
+
+        button {
+            background: #f28c28;
+            color: white;
+            border: 0;
+            padding: 8px 15px;
+            margin-top: 15px;
+        }
+
+        footer {
+            background: #1f4e79;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>AutoMob-Mechanic</h1>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="booking.html">Booking</a>
+        <a href="mailto:contact@automob.co.in">contact@automob.co.in</a>
+        <a href="tel:999 999 9999">999 999 9999</a>
+    </nav>
+
+    <hr>
+
+    <main>
+        <h2>Schedule Your Appointment</h2>
+
+        <form action="./booking-success.html" method="get" autocomplete="off">
+
+            <label>Appointment Date</label>
+            <input type="date" name="date" required>
+
+            <label>Address</label>
+            <textarea name="address" required></textarea>
+
+            <label>City</label>
+            <input type="text" name="city" required>
+
+            <label>State</label>
+            <input list="states" name="state" required>
+
+            <datalist id="states">
+                <option value="Andhra Pradesh">
+                <option value="Assam">
+                <option value="Bihar">
+                <option value="Gujarat">
+                <option value="Goa">
+                <option value="Kerala">
+                <option value="Karnataka">
+                <option value="Maharashtra">
+            </datalist>
+
+            <label>Send Notification</label>
+            <input type="checkbox" name="notification" value="Email"> Email
+            <input type="checkbox" name="notification" value="SMS"> SMS
+
+            <br>
+
+            <button type="submit">Book</button>
+            <button type="button" onclick="history.back()">Back</button>
+
+        </form>
+    </main>
+
+    <hr>
+
+    <footer>
+        Copyright © 2020 AutoMob-Mechanic. All Rights Reserved.
+    </footer>
+
+</body>
+
+</html>

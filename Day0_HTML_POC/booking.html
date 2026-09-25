@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Booking | AutoMob-Mechanic</title>
+    <!-- Here I am applying basic CSS to look my web page better..(Internal-CSS) -->
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        h1 {
+            background: #1f4e79;
+            color: white;
+            margin: 0;
+            padding: 18px 25px;
+        }
+
+       
+        /* Navigation bar */
+        nav {
+            background-color: #d9eaf7;
+            padding: 15px 25px;
+            display: flex;
+            gap: 25px;
+        }
+
+        /* Navigation links */
+        nav a {
+            color: #1f4e79;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        select {
+            padding: 7px;
+            margin-top: 5px;
+        }
+
+        button {
+            background: #f28c28;
+            color: white;
+            border: 0;
+            padding: 8px 15px;
+            margin-top: 15px;
+        }
+
+        footer {
+            background: #1f4e79;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>AutoMob-Mechanic</h1>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="booking.html">Booking</a>
+        <a href="mailto:contact@automob.co.in">contact@automob.co.in</a>
+        <a href="tel:999 999 9999">999 999 9999</a>
+    </nav>
+
+    <hr>
+
+    <main>
+        <h2>Book Your Service</h2>
+
+        <!-- Booking form is submitted to appointment.html -->
+        <form action="appointment.html" method="get" autocomplete="off">
+
+            <label>Name</label>
+            <input type="text" name="name" pattern="[A-Za-z]+ [A-Za-z]+" required>
+
+            <label>Email Id</label>
+            <input type="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+
+            <label>Phone Number</label>
+            <select name="code" required>
+                <option selected disabled>code</option>
+                <option>+213</option>
+                <option>+91</option>
+                <option>+244</option>
+                <option>+61</option>
+            </select>
+
+            <input type="tel" name="phone" pattern="[0-9]{10}" required>
+
+            <label>Select Service</label>
+            <select name="service" required>
+                <option value="">Select Service</option>
+                <option>Preventive Maintenance Service</option>
+                <option>Body Repair Service</option>
+                <option>Car Care Service</option>
+            </select>
+
+            <label>Car Make</label>
+            <input list="cars" name="carMake" required>
+            <datalist id="cars">
+                <option value="Mahindra">
+                <option value="Honda">
+                <option value="Hyundai">
+                <option value="Ford">
+                <option value="Toyota">
+                <option value="Nissan">
+            </datalist>
+
+            <label>Car Model</label>
+            <input type="text" name="carModel" required>
+
+            <label>Fuel Type</label>
+            <input type="radio" name="fuel" value="Petrol" required> Petrol
+            <input type="radio" name="fuel" value="Diesel"> Diesel
+            <input type="radio" name="fuel" value="LPG"> LPG
+            <input type="radio" name="fuel" value="Others"> Others
+
+            <label>Kilometers Ran</label>
+            <input type="number" name="kilometers" required>
+
+            <br>
+            <button type="submit">Schedule an Appointment</button>
+
+        </form>
+    </main>
+
+    <hr>
+
+    <footer>
+        Copyright © 2020 AutoMob-Mechanic. All Rights Reserved.
+    </footer>
+
+</body>
+
+</html>
