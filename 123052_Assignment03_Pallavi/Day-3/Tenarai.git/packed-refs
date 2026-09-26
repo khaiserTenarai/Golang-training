@@ -1,0 +1,6 @@
+# pack-refs with: peeled fully-peeled sorted 
+839560aad3f06ccae07595bbca446f0b449bba97 refs/heads/feature/employee-management
+839560aad3f06ccae07595bbca446f0b449bba97 refs/heads/main
+923fe1ac4c4defb0b4a57137f8bd9418ece04095 refs/tags/v1.0.0
+48299272e7890a00278ba260aeb51b74d8144656 refs/tags/v1.1.0
+^923fe1ac4c4defb0b4a57137f8bd9418ece04095
