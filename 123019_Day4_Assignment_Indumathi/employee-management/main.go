@@ -1,12 +1,10 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 
 	"employee-management/model"
 	"employee-management/service"
-	"employee-management/utility"
 )
 
 func main() {
@@ -25,7 +23,7 @@ func main() {
 		fmt.Println("4. View Employee")
 		fmt.Println("5. Exit")
 
-		fmt.Println("Please enter your choice:")
+		fmt.Println("Enter your choice:")
 
 		var choice int
 		fmt.Scan(&choice)
@@ -53,17 +51,7 @@ func main() {
 			err := employeeService.AddEmployee(employee)
 
 			if err != nil {
-				var validationError utility.ValidationError
-
-				if errors.As(err, &validationError) {
-					fmt.Println("Validation Error:")
-					fmt.Println("Field:", validationError.Field)
-					fmt.Println("Message:", validationError.Message)
-				} else if errors.Is(err, utility.ErrDuplicateEmployee) {
-					fmt.Println("Employee already exists")
-				} else {
-					fmt.Println("Error:", err)
-				}
+				fmt.Println("Error:", err)
 			} else {
 				fmt.Println("Employee added successfully")
 			}
@@ -77,11 +65,7 @@ func main() {
 			employee, err := employeeService.GetEmployee(id)
 
 			if err != nil {
-				if errors.Is(err, utility.ErrEmployeeNotFound) {
-					fmt.Println("Employee not found")
-				} else {
-					fmt.Println("Error:", err)
-				}
+				fmt.Println("Error:", err)
 			} else {
 				fmt.Println("Employee found:")
 				fmt.Println("ID:", employee.ID)
@@ -100,11 +84,7 @@ func main() {
 			err := employeeService.DeleteEmployee(id)
 
 			if err != nil {
-				if errors.Is(err, utility.ErrEmployeeNotFound) {
-					fmt.Println("Employee not found")
-				} else {
-					fmt.Println("Error:", err)
-				}
+				fmt.Println("Error:", err)
 			} else {
 				fmt.Println("Employee deleted successfully")
 			}
@@ -115,29 +95,14 @@ func main() {
 			fmt.Println("Enter Employee ID:")
 			fmt.Scan(&id)
 
-			employee, err := employeeService.GetEmployee(id)
-
-			if err != nil {
-				if errors.Is(err, utility.ErrEmployeeNotFound) {
-					fmt.Println("Employee not found")
-				} else {
-					fmt.Println("Error:", err)
-				}
-			} else {
-				fmt.Println("\nEmployee Details:")
-				fmt.Println("ID:", employee.ID)
-				fmt.Println("Name:", employee.Name)
-				fmt.Println("Email:", employee.Email)
-				fmt.Println("Age:", employee.Age)
-				fmt.Println("Salary:", employee.Salary)
-			}
+			employeeService.ViewEmployee(id)
 
 		case 5:
-			fmt.Println("Exiting Employee Management...")
+			fmt.Println("Exiting...")
 			return
 
 		default:
-			fmt.Println("Wrong choice. Please select 1 to 5.")
+			fmt.Println("Invalid choice")
 		}
 	}
 }

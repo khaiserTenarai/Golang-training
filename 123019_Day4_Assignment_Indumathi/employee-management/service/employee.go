@@ -1,6 +1,7 @@
 package service
 
 import (
+	"errors"
 	"fmt"
 
 	"employee-management/model"
@@ -82,4 +83,25 @@ func (s *EmployeeService) DeleteEmployee(id int) error {
 		"cannot delete employee: %w",
 		utility.ErrEmployeeNotFound,
 	)
+}
+
+func (s *EmployeeService) ViewEmployee(id int) {
+
+	employee, err := s.GetEmployee(id)
+
+	if err != nil {
+		if errors.Is(err, utility.ErrEmployeeNotFound) {
+			fmt.Println("Employee not found")
+		} else {
+			fmt.Println("Error:", err)
+		}
+		return
+	}
+
+	fmt.Println("\nEmployee Details:")
+	fmt.Println("ID:", employee.ID)
+	fmt.Println("Name:", employee.Name)
+	fmt.Println("Email:", employee.Email)
+	fmt.Println("Age:", employee.Age)
+	fmt.Println("Salary:", employee.Salary)
 }
