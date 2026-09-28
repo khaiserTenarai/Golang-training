@@ -1,0 +1,877 @@
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S> mkdir day3_Assignment
+
+
+    Directory: C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S
+
+
+Mode                 LastWriteTime         Length Name                          
+----                 -------------         ------ ----                          
+d-----        23-09-2026     15:04                day3_Assignment               
+
+
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S> cd day3_Assignment
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git init
+Initialized empty Git repository in C:/Users/abirami.s/Desktop/GO lang training/124768_Day3_Abirami_S/day3_Assignment/.git/
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git add main.go
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   main.go
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        README.md
+
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git add README.md
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   README.md
+        new file:   main.go
+
+PS C:^Csers\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> 
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git commit -m "First commit"
+[master (root-commit) 200c449] First commit
+ Committer: Abirami S <Abirami.S@tenarai.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 8 insertions(+)
+ create mode 100644 README.md
+ create mode 100644 main.go
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git add main.go
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git commit -m "Second commit"
+[master 912b486] Second commit
+ Committer: Abirami S <Abirami.S@tenarai.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git add main.go              
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git commit -m "Third commit" 
+[master bf14342] Third commit
+ Committer: Abirami S <Abirami.S@tenarai.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git add main.go             
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git commit -m "Fourth commit"
+[master e20c501] Fourth commit
+ Committer: Abirami S <Abirami.S@tenarai.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git add main.go              
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git commit -m "Fifth commit" 
+[master cf5e578] Fifth commit
+ Committer: Abirami S <Abirami.S@tenarai.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git diff
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git diff
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+:
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+:
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+~
+~
+~
+~
+~
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git add main.go             
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git diff --staged
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+:
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+~
+~
+~
+~
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+:
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+diff --git a/main.go b/main.go
+index 313b848..5e3e9ff 100644
+--- a/main.go
++++ b/main.go
+@@ -3,7 +3,7 @@ package main
+ import "fmt"
+ 
+ func main() {
+-       fmt.Println("Welcome to Go Lang training")
++       fmt.Println("Welcome to Go Lang training program")
+        fmt.Println("Day 1-Learning GO basics")
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git log --oneline
+cf5e578 (HEAD -> master) Fifth commit
+e20c501 Fourth commit
+bf14342 Third commit
+912b486 Second commit
+200c449 First commit
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git show 200c449
+commit 200c4495351835dffda1842b038c47b858bc6866
+Author: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 19:18:44 2026 +0530
+
+    First commit
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..577edd8
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++README file for Day3 Assignment
+:
+commit 200c4495351835dffda1842b038c47b858bc6866
+Author: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 19:18:44 2026 +0530
+
+    First commit
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..577edd8
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++README file for Day3 Assignment
+\ No newline at end of file
+diff --git a/main.go b/main.go
+new file mode 100644
+index 0000000..a45f7d0
+--- /dev/null
++++ b/main.go
+@@ -0,0 +1,7 @@
++package main
++
++import "fmt"
+:
+commit 200c4495351835dffda1842b038c47b858bc6866
+Author: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 19:18:44 2026 +0530
+
+    First commit
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..577edd8
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++README file for Day3 Assignment
+\ No newline at end of file
+diff --git a/main.go b/main.go
+new file mode 100644
+index 0000000..a45f7d0
+--- /dev/null
++++ b/main.go
+@@ -0,0 +1,7 @@
++package main
++
++import "fmt"
++
+:
+commit 200c4495351835dffda1842b038c47b858bc6866
+Author: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 19:18:44 2026 +0530
+
+    First commit
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..577edd8
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++README file for Day3 Assignment
+\ No newline at end of file
+diff --git a/main.go b/main.go
+new file mode 100644
+index 0000000..a45f7d0
+--- /dev/null
++++ b/main.go
+@@ -0,0 +1,7 @@
++package main
++
++import "fmt"
++
++func main() {
+:
+commit 200c4495351835dffda1842b038c47b858bc6866
+Author: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 19:18:44 2026 +0530
+
+    First commit
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..577edd8
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++README file for Day3 Assignment
+\ No newline at end of file
+diff --git a/main.go b/main.go
+new file mode 100644
+index 0000000..a45f7d0
+--- /dev/null
++++ b/main.go
+@@ -0,0 +1,7 @@
++package main
++
++import "fmt"
++
++func main() {
++       fmt.Println("Welcome to Go Lang training")
+:
+commit 200c4495351835dffda1842b038c47b858bc6866
+Author: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 19:18:44 2026 +0530
+
+    First commit
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..577edd8
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++README file for Day3 Assignment
+\ No newline at end of file
+diff --git a/main.go b/main.go
+new file mode 100644
+index 0000000..a45f7d0
+--- /dev/null
++++ b/main.go
+@@ -0,0 +1,7 @@
++package main
++
++import "fmt"
++
++func main() {
++       fmt.Println("Welcome to Go Lang training")
++}
+~
+~
+~
+(END)
+commit 200c4495351835dffda1842b038c47b858bc6866
+Author: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 19:18:44 2026 +0530
+
+    First commit
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..577edd8
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++README file for Day3 Assignment
+\ No newline at end of file
+diff --git a/main.go b/main.go
+new file mode 100644
+index 0000000..a45f7d0
+--- /dev/null
++++ b/main.go
+@@ -0,0 +1,7 @@
++package main
++
+:
+commit 200c4495351835dffda1842b038c47b858bc6866
+Author: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 19:18:44 2026 +0530
+
+    First commit
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..577edd8
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++README file for Day3 Assignment
+\ No newline at end of file
+diff --git a/main.go b/main.go
+new file mode 100644
+:
+commit 200c4495351835dffda1842b038c47b858bc6866
+Author: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 19:18:44 2026 +0530
+
+    First commit
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..577edd8
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   main.go
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   main.go
+
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git diff
+diff --git a/main.go b/main.go
+index 5e3e9ff..4b140af 100644
+--- a/main.go
++++ b/main.go
+@@ -8,4 +8,6 @@ func main() {
+        fmt.Println("Day 1-Practicing GO basics")
+        fmt.Println("Day 2-Learning layered architecture")
+        fmt.Println("Day 2-Practicing layered architecture")
++       fmt.Println("Day 2-Practicing layered architecture")
++       fmt.Println("Temporary change")
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git restore main.go
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   main.go
+
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git diff
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git branch
+* master
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git checkout main
+error: pathspec 'main' did not match any file(s) known to git
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git restore --staged main.go
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   main.go
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git restore main.go
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git status
+On branch master
+nothing to commit, working tree clean
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git branch -M main
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git branch
+* main
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git checkout -b feature/employee
+Switched to a new branch 'feature/employee'
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git branch
+* feature/employee
+  main
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git checkout -b feature/report  
+Switched to a new branch 'feature/report'
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git branch
+  feature/employee
+* feature/report
+  main
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git status
+On branch feature/report
+nothing to commit, working tree clean
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git switch main
+Switched to branch 'main'
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git branch
+  feature/employee
+  feature/report
+* main
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git merge feature/employee
+Already up to date.
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git switch feature/employee
+Switched to branch 'feature/employee'
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git add main.go
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git commit -m "changes made to feature/employee"
+[feature/employee df1f25f] changes made to feature/employee
+ Committer: Abirami S <Abirami.S@tenarai.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 deletion(-)
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git switch main                     
+Switched to branch 'main'
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git add main.go                     
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git commit -m "changes made to main branch"     
+[main e42c6b3] changes made to main branch
+ Committer: Abirami S <Abirami.S@tenarai.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git merge feature/employee          
+Auto-merging main.go
+CONFLICT (content): Merge conflict in main.go
+Automatic merge failed; fix conflicts and then commit the result.
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git add main.go                     
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git commit -m "Resolve merge conflict"                           
+[main b4bfa0b] Resolve merge conflict
+ Committer: Abirami S <Abirami.S@tenarai.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git status
+On branch main
+nothing to commit, working tree clean
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git branch
+  feature/employee
+  feature/report
+* main
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git status
+On branch main
+nothing to commit, working tree clean
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git tag -a v1.0.0 -m "Version 1.0.0"
+
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git tag
+v1.0.0
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git show v1.0.0
+tag v1.0.0
+Tagger: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 20:11:29 2026 +0530
+
+Version 1.0.0
+
+commit b4bfa0b2c1a10525b1af8c667636ecea458e9b16 (HEAD -> main, tag: v1.0.0)
+Merge: e42c6b3 df1f25f
+Author: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 20:06:02 2026 +0530
+:
+tag v1.0.0
+Tagger: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 20:11:29 2026 +0530
+
+Version 1.0.0
+
+commit b4bfa0b2c1a10525b1af8c667636ecea458e9b16 (HEAD -> main, tag: v1.0.0)
+Merge: e42c6b3 df1f25f
+Author: Abirami S <Abirami.S@tenarai.com>
+Date:   Wed Sep 23 20:06:02 2026 +0530
+
+    Resolve merge conflict
+
+~
+~
+~
+~
+~
+~
+~
+~
+PS C:\Users\abirami.s\Desktop\GO lang training\124768_Day3_Abirami_S\day3_Assignment> git tag -n
+v1.0.0          Version 1.0.0

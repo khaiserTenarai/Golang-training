@@ -1,0 +1,246 @@
+1. Initialize a Git repository for the Go project.  
+
+Commands:
+git init
+git status
+
+A local git repo will be created and the project files are shown as untracked/modified files.
+
+2. Create a professional README.md
+
+Steps:
+    1. Create a README.md file
+    2. Add project title
+    3. Add project description
+    4. Add instructions
+    5. Save the file
+
+Commands:
+git add README.md
+git commit -m "README.md file commit"
+
+3. Demonstrate Working tree vs Staging Area
+
+Modify the file and run the following commands
+Commands:
+git status
+git add filename
+git status
+
+Working tree contains changes that have been made but not staged.
+Staging area contains changes selected for the next commit.
+
+4. Create five meaningful commits
+
+Make logical changes to the project
+Commit it with meaningful message
+Repead this process for 5 differenct changes
+
+Commands:
+git add.
+git commit -m "1st commit"
+
+git add.
+git commit -m "2nd commit"
+
+git add.
+git commit -m "3rd commit"
+
+git add.
+git commit -m "4th commit"
+
+git add.
+git commit -m "5th commit"
+
+5. Practice git diff
+
+Steps:
+    1. Modify a tracked file
+    2. Run git diff
+
+Commands:
+git diff  ->   for unstaged changes
+git diff --staged -> for staged changes
+
+6. Practice git show
+
+Steps:
+    1. Display the commit history.
+    2. Copy the required commit ID.
+    3. Use git show with commit ID
+
+Commands:
+git log --oneline
+git show commit_ID
+
+7. Practice git restore
+
+Steps:
+    1. Modify a file
+    2. Restore the file
+
+Command:
+git restore filename
+
+The unstaged modification is discarded and the file returns to its last committed state.
+
+8. Create feature/employee branch
+
+Steps:
+    1. Switch to main
+    2. Create the feature/employee branch
+
+Commands:
+git switch main
+git pull origin main
+git switch -b feature/employee
+git branch
+
+9. Create feature/report branch
+
+Steps:
+    1. Switch to main
+    2. Create the feature/report branch
+
+Commands:
+git switch main
+git switch -b feature/report
+git branch
+
+10. Merge a feature branch into main
+
+Steps:
+    1. Switch to main
+    2. Update the main branch.
+    3. Merge the employee feature branch.
+    4. Check the status.
+
+Commands:
+git switch main
+git pull origin main
+git merge feature/employee
+git status
+
+11. Create and resolve a merge conflict
+
+Steps:
+    1. Create feature/employee
+    2. Modify the same section of a file.
+    3. Commit the changes
+    4. Switch to another branch.
+    5. Modify the same section differently
+    6. Commit the second change.
+    7. Merge the branches
+    8. Git will report merge conflict
+
+Commands:
+git switch main
+git switch -b feature/employee
+
+git add .
+git commit -m "1st commit"
+
+Switch to another branch
+git switch main
+git switch -b feature/report
+
+git add .
+git commit -m "2nd commit"
+
+git switch main
+git merge feature/employee
+git merge feature/report
+
+To resolve the conflict:
+    1. When conflict occurs, open the conflicted file in VS code and remove the conflict markers
+    <<<<<<<<< HEAD
+    ========
+    >>>>>>>>> branch-name
+    2. Save the file
+    3. Stage the resolved file
+    4. Commit the file
+
+Commands:
+git add resolved-filename
+git commit -m "Resolved conflict file commit"
+git status
+
+12. Push the project to GitHub
+
+Steps:
+    1. Create a repository on GitHub
+    2. Copy the repository URL.
+    3. Connect the local repository to GitHub.
+    4. Push the main branch
+
+Commands:
+git remote add origin github-repoo-url
+git remote -v
+git branch -M main
+git push -u origin main
+
+13. Demonstrate git fetch vs git pull
+git fetch:
+It downloads information about changes from the remote repository without directly merging those changes into the current branch.
+Command:
+git fetch origin
+
+git pull:
+It downloads remote changes and integrates them into the current branch according to the configured pull strategy.
+
+Command:
+git pull origin main
+
+14. Create an annotated release tag
+
+Steps:
+    1. Switch to main
+    2. Pull the latest changes
+    3. Create an annotated tag
+    4. Verify the tag.
+    5. Push the tag to github
+
+Commands:
+git switch main
+git pull origin main
+git tag -a v1.0.0 -m "Version v1.0.0"
+git tag
+git show v1.0.0
+git push origin v1.0.0
+
+15. Day3 Mini Project - Complete Git workflow
+
+1. Create a branch
+Command:
+git switch main
+git switch -b feature/employee
+
+2. Commit
+
+Command:
+git status
+git add .
+git commit -m "My 1st commit"
+
+3. Pull
+Command:
+git switch main
+git pull origin main
+
+4. Merge
+Command:
+git merge feature/employee
+git status
+
+In case of conflicting code, resolve the conflicted code, save the file, stage the resolved file and commit the sloution
+
+5. Tag
+Command:
+git tag -a v1.0.0 -m "Version v1.0.0"
+git tag
+git show v1.0.0  ->  to view the tag details
+
+6. Push
+Command:
+git push origin main
+git push origin v1.0.0
