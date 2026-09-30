@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    price NUMERIC(12, 2) NOT NULL
+);
