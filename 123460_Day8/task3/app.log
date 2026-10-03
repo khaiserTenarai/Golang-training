@@ -1,0 +1,4 @@
+DEBUG: 2026/10/04 00:37:25 loglevels.go:25: Initializing configuration...
+INFO:  2026/10/04 00:37:25 loglevels.go:26: Application started successfully.
+WARN:  2026/10/04 00:37:25 loglevels.go:27: High memory usage detected.
+ERROR: 2026/10/04 00:37:25 loglevels.go:28: Failed to connect to database.

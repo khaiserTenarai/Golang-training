@@ -1,0 +1,6 @@
+{"time":"2026-10-04T00:39:46.6407037+05:30","level":"DEBUG","msg":"Initializing database connection","host":"localhost","port":5432}
+{"time":"2026-10-04T00:39:46.644513+05:30","level":"INFO","msg":"Application started","version":"1.0.0","env":"production"}
+{"time":"2026-10-04T00:39:46.645055+05:30","level":"INFO","msg":"User logged in","user":"admin","ip":"192.168.1.50"}
+{"time":"2026-10-04T00:39:46.645055+05:30","level":"WARN","msg":"High memory usage","usage_percent":88.5,"free_mb":256}
+{"time":"2026-10-04T00:39:46.6455999+05:30","level":"ERROR","msg":"Database query failed","query_id":402,"error":"connection timeout"}
+{"time":"2026-10-04T00:39:46.6455999+05:30","level":"INFO","msg":"Profile updated","user_context":{"id":42,"role":"editor"}}

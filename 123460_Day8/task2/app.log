@@ -1,0 +1,3 @@
+INFO:  2026/10/04 00:36:12 logger.go:23: Application started successfully.
+INFO:  2026/10/04 00:36:12 logger.go:24: User admin logged in from IP 192.168.1.50
+WARN:  2026/10/04 00:36:12 logger.go:25: High memory usage detected.
