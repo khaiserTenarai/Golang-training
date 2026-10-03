@@ -1,0 +1,11 @@
+package repository
+import("context";"time";"q14-attendance-leave/model";"github.com/jackc/pgx/v5/pgxpool")
+type AttendanceRepository interface{CheckIn(int)error;CheckOut(int)error;GetAttendance(int)([]model.Attendance,error);ApplyLeave(model.Leave)error;UpdateLeaveStatus(int,string)error;GetLeaves(int)([]model.Leave,error)}
+type AttendanceRepositoryImpl struct{db *pgxpool.Pool}
+func NewAttendanceRepository(db *pgxpool.Pool)AttendanceRepository{return &AttendanceRepositoryImpl{db}}
+func(r *AttendanceRepositoryImpl)CheckIn(id int)error{_,e:=r.db.Exec(context.Background(),`INSERT INTO attendance(employee_id,check_in)VALUES($1,$2)`,id,time.Now());return e}
+func(r *AttendanceRepositoryImpl)CheckOut(id int)error{_,e:=r.db.Exec(context.Background(),`UPDATE attendance SET check_out=$1 WHERE employee_id=$2 AND attendance_date=CURRENT_DATE AND check_out IS NULL`,time.Now(),id);return e}
+func(r *AttendanceRepositoryImpl)GetAttendance(id int)([]model.Attendance,error){rows,e:=r.db.Query(context.Background(),`SELECT id,employee_id,check_in,check_out,attendance_date FROM attendance WHERE employee_id=$1 ORDER BY attendance_date DESC`,id);if e!=nil{return nil,e};defer rows.Close();var out []model.Attendance;for rows.Next(){var a model.Attendance;if e=rows.Scan(&a.ID,&a.EmployeeID,&a.CheckIn,&a.CheckOut,&a.AttendanceDate);e!=nil{return nil,e};out=append(out,a)};return out,rows.Err()}
+func(r *AttendanceRepositoryImpl)ApplyLeave(l model.Leave)error{_,e:=r.db.Exec(context.Background(),`INSERT INTO leaves(employee_id,leave_date,reason)VALUES($1,$2,$3)`,l.EmployeeID,l.LeaveDate,l.Reason);return e}
+func(r *AttendanceRepositoryImpl)UpdateLeaveStatus(id int,s string)error{_,e:=r.db.Exec(context.Background(),`UPDATE leaves SET status=$1 WHERE id=$2`,s,id);return e}
+func(r *AttendanceRepositoryImpl)GetLeaves(id int)([]model.Leave,error){rows,e:=r.db.Query(context.Background(),`SELECT id,employee_id,leave_date,reason,status FROM leaves WHERE employee_id=$1 ORDER BY leave_date DESC`,id);if e!=nil{return nil,e};defer rows.Close();var out []model.Leave;for rows.Next(){var l model.Leave;if e=rows.Scan(&l.ID,&l.EmployeeID,&l.LeaveDate,&l.Reason,&l.Status);e!=nil{return nil,e};out=append(out,l)};return out,rows.Err()}

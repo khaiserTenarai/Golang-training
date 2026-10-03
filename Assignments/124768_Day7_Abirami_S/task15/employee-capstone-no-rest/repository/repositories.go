@@ -1,0 +1,13 @@
+package repository
+import("context";"errors";"q15-employee-capstone-no-rest/model";"github.com/jackc/pgx/v5";"github.com/jackc/pgx/v5/pgxpool")
+var ErrNotFound=errors.New("not found")
+type UserRepository struct{db *pgxpool.Pool}
+func NewUserRepository(db *pgxpool.Pool)*UserRepository{return &UserRepository{db}}
+func(r *UserRepository)Create(u model.User)error{_,e:=r.db.Exec(context.Background(),`INSERT INTO users(username,password_hash,role)VALUES($1,$2,$3)`,u.Username,u.PasswordHash,u.Role);return e}
+func(r *UserRepository)Get(name string)(*model.User,error){var u model.User;e:=r.db.QueryRow(context.Background(),`SELECT id,username,password_hash,role FROM users WHERE username=$1`,name).Scan(&u.ID,&u.Username,&u.PasswordHash,&u.Role);if e==pgx.ErrNoRows{return nil,ErrNotFound};return &u,e}
+type EmployeeRepository struct{db *pgxpool.Pool}
+func NewEmployeeRepository(db *pgxpool.Pool)*EmployeeRepository{return &EmployeeRepository{db}}
+func(r *EmployeeRepository)Create(e model.Employee)error{_,x:=r.db.Exec(context.Background(),`INSERT INTO employees(name,email,salary)VALUES($1,$2,$3)`,e.Name,e.Email,e.Salary);return x}
+func(r *EmployeeRepository)Get(id int)(*model.Employee,error){var e model.Employee;x:=r.db.QueryRow(context.Background(),`SELECT id,name,email,salary,version FROM employees WHERE id=$1`,id).Scan(&e.ID,&e.Name,&e.Email,&e.Salary,&e.Version);if x==pgx.ErrNoRows{return nil,ErrNotFound};return &e,x}
+func(r *EmployeeRepository)List(page,size int,name string)([]model.Employee,error){if page<1{page=1};if size<1{size=5};rows,x:=r.db.Query(context.Background(),`SELECT id,name,email,salary,version FROM employees WHERE name ILIKE $1 ORDER BY id LIMIT $2 OFFSET $3`,`%`+name+`%`,size,(page-1)*size);if x!=nil{return nil,x};defer rows.Close();var out []model.Employee;for rows.Next(){var e model.Employee;if x=rows.Scan(&e.ID,&e.Name,&e.Email,&e.Salary,&e.Version);x!=nil{return nil,x};out=append(out,e)};return out,rows.Err()}
+func(r *EmployeeRepository)UpdateSalary(id int,s float64)error{tx,x:=r.db.Begin(context.Background());if x!=nil{return x};defer tx.Rollback(context.Background());var old float64;x=tx.QueryRow(context.Background(),`SELECT salary FROM employees WHERE id=$1 FOR UPDATE`,id).Scan(&old);if x==pgx.ErrNoRows{return ErrNotFound};if x!=nil{return x};if _,x=tx.Exec(context.Background(),`UPDATE employees SET salary=$1,version=version+1 WHERE id=$2`,s,id);x!=nil{return x};if _,x=tx.Exec(context.Background(),`INSERT INTO salary_history(employee_id,old_salary,new_salary)VALUES($1,$2,$3)`,id,old,s);x!=nil{return x};return tx.Commit(context.Background())}

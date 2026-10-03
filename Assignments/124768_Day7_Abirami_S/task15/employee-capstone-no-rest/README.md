@@ -1,0 +1,1 @@
+Q15 is implemented as a console application because REST API has not been taught. It includes CRUD-style employee operations, authentication with bcrypt, pagination/search, salary-history transaction, logging, interfaces/dependency injection. REST API is intentionally omitted.
