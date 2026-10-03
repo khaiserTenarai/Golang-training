@@ -1,0 +1,19 @@
+mode: set
+ems/service/service_impl.go:17.2,19.1 1 1
+ems/service/service_impl.go:24.2,25.1 2 1
+ems/service/service_impl.go:26.2,26.16 2 1
+ems/service/service_impl.go:27.3,28.1 1 1
+ems/service/service_impl.go:30.2,31.1 2 1
+ems/service/service_impl.go:32.2,32.16 2 1
+ems/service/service_impl.go:33.3,34.1 1 1
+ems/service/service_impl.go:36.2,36.36 1 1
+ems/service/service_impl.go:41.2,42.1 1 1
+ems/service/service_impl.go:46.2,47.1 1 0
+ems/service/service_impl.go:51.2,52.1 2 0
+ems/service/service_impl.go:53.2,53.16 2 0
+ems/service/service_impl.go:54.3,55.1 1 0
+ems/service/service_impl.go:57.2,58.1 2 0
+ems/service/service_impl.go:59.2,59.16 2 0
+ems/service/service_impl.go:60.3,61.1 1 0
+ems/service/service_impl.go:63.2,63.38 1 0
+ems/service/service_impl.go:68.2,69.1 1 0
