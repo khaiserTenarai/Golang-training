@@ -1,14 +1,14 @@
-# Go Training Assignments
+# Go Training Assignments — Ranjitha
 
-This repository contains my Go (Golang) training assignments, practice programs, exercises, and mini projects completed throughout my training journey.
+This branch contains my Go (Golang) training assignments, practice exercises, and mini projects completed throughout the training program.
 
 ## About
 
-The assignments cover Go programming from fundamentals to advanced concepts, along with practical development and supporting tools.
+The assignments cover Go programming from fundamental to advanced concepts, with practical exercises to build programming, application development, testing, debugging, and database skills.
 
-Topics include:
+## Topics Covered
 
-* Go fundamentals and advanced Go concepts
+* Go fundamentals and advanced concepts
 * Functions, structs, interfaces, pointers and slices
 * Packages and error handling
 * CRUD operations and application development
@@ -16,11 +16,11 @@ Topics include:
 * PostgreSQL and database operations
 * Testing, debugging and code quality
 * Git and GitHub
-* Mini projects and practical exercises
+* Practical exercises and mini projects
 
-## Repository Structure
+## Assignment Structure
 
-Each assignment is organized into a separate folder based on the training day.
+Assignments are organized according to the training day.
 
 ```text
 Golang-training/
@@ -40,9 +40,10 @@ New assignments will be added as the training progresses.
 
 * Go (Golang)
 * Git & GitHub
-* VS Code
+* Visual Studio Code
 * PostgreSQL
 
 ## Purpose
 
-This repository is used to maintain, organize, and track my Go training progress and completed assignments.
+This branch is used to maintain and track my completed Go training assignments and practical work.
+
