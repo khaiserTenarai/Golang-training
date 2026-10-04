@@ -1,0 +1,14 @@
+Definition:
+Unit testing means testing individual functions separately to check whether they work correctly.
+
+Purpose:
+Here we test employee validation functions with both valid and invalid values.
+
+Commands used
+go test
+go test -v
+
+Result
+
+PASS
+ok

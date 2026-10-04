@@ -1,0 +1,18 @@
+Different Log Levels
+Definition:
+Log levels are used to classify log messages based on their importance or severity.
+
+Why do we use them?
+INFO → tells us what the application is normally doing.
+
+WARNING → indicates something unusual that may need attention.
+
+ERROR → indicates that something went wrong.
+
+For example:
+
+INFO: application started
+WARNING: salary is below expected value
+ERROR: database connection failed
+
+Purpose: Log levels make it easier to understand, filter, and troubleshoot application logs, especially when there are many log messages.

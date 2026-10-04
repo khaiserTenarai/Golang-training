@@ -1,0 +1,33 @@
+7. Static Analysis
+Definition:
+Static analysis is the process of checking source code without running the application to find possible errors and code-quality issues.
+
+Purpose:
+
+Find potential problems early.
+
+Improve code quality.
+
+Detect suspicious code.
+
+Make the code easier to maintain.
+
+Commands used:
+
+go mod init task7
+go test
+go vet .
+staticcheck .
+
+Output:
+
+PASS
+ok      task7    0.XXXs
+
+If no issues are found by go vet or staticcheck, they produce no error messages.
+
+Result:
+The program passed the tests and the code was checked for possible static-analysis issues.
+
+
+

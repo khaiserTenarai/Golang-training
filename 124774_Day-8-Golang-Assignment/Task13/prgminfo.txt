@@ -1,0 +1,16 @@
+Definition:
+Benchmarking is used to measure the performance and execution speed of a function.
+
+Purpose:
+To check how efficiently a function runs and measure its execution time.
+
+Commands used
+go mod init benchmark
+
+Then:
+
+go test -bench=.
+
+Result
+
+ok      benchmark       0.853s [no tests to run]

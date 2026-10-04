@@ -1,0 +1,17 @@
+Structured Logs
+Definition:
+Structured logging means recording log information in an organized format using key-value pairs.
+
+Purpose:
+
+Makes logs easier to read and search.
+
+Helps identify specific information quickly.
+
+Makes debugging and monitoring easier.
+
+Useful when the application generates many logs.
+
+Example:
+
+employee_id=101 action=add status=success

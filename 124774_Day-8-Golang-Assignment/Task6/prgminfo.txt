@@ -1,0 +1,15 @@
+6. go vet
+Intentional mistake: We used %d in fmt.Printf() for a string variable.
+
+%d is used for integers, while %s is used for strings.
+
+Program result
+When running go vet ., it detected the mistake:
+
+fmt.Printf format %d has arg name of wrong type string
+
+Result: go vet successfully identified the incorrect format specifier.
+
+After changing %d to %s, go vet . runs without any warning.
+
+Purpose: go vet helps identify suspicious code and common programming mistakes before they cause problems.

@@ -1,0 +1,27 @@
+Definition:
+Table-driven testing is a way of testing multiple inputs and expected outputs using a single test function.
+
+Purpose:
+
+Avoid writing separate test functions for every case.
+
+Test multiple scenarios easily.
+
+Make tests clean and organized.
+
+Commands used:
+
+go mod init table_driven
+go test
+
+For detailed output:
+
+go test -v
+
+Result:
+
+PASS
+ok      table_driven
+
+In this program:
+ tested different employee ages such as valid age, zero, negative age, maximum age, and age above the limit using one table-driven test.

@@ -1,0 +1,8 @@
+Definition: Salary calculation testing checks whether the salary function produces the correct result for given basic salary and bonus values.
+
+Purpose: To make sure the salary calculation logic is correct and to catch calculation mistakes.
+
+commands used
+
+go mod init salary
+go test

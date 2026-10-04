@@ -1,0 +1,33 @@
+ Unit Tests
+go test
+
+For detailed test output:
+
+go test -v
+
+2. Coverage
+go test -cover
+
+Detailed coverage:
+
+go test -coverprofile=coverage.out
+go tool cover -func=coverage.out
+
+HTML coverage report:
+
+go tool cover -html=coverage.out
+
+3. Formatting
+Check formatting:
+
+gofmt -d employee_service.go employee_service_test.go
+
+Automatically format:
+
+gofmt -w employee_service.go employee_service_test.go
+
+4. Static Analysis
+go vet
+
+5. Race Detection
+go test -race

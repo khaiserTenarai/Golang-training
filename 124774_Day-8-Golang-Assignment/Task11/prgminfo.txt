@@ -1,0 +1,18 @@
+Definition:
+Test coverage shows how much of the program code is executed when we run our tests.
+
+Purpose:
+To check whether our tests are covering the code properly and identify code that is not being tested.
+
+Command used:
+
+go test -cover
+
+Result:
+
+PASS
+coverage: 66.7% of statements
+ok      coverage
+
+Result meaning:
+The test passed successfully, and 66.7% of the statements in the program were covered by the test.

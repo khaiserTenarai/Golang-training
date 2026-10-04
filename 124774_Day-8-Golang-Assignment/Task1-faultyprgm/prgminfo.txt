@@ -1,0 +1,34 @@
+Created a faulty Employee Management program with 2 intentional bugs:
+Bonus calculation used salary * 10 instead of salary * 0.10.
+Salary update used salary - increment instead of salary + increment.
+Used Delve (dlv) to debug the program.
+
+Commands used
+-------------
+dlv debug .
+break calculateBonus
+continue
+print salary
+next
+print bonus
+
+This helped identify the incorrect bonus value: 200000 instead of 2000.
+
+Then:
+
+break updateSalary
+continue
+print employee
+print increment
+next
+print employee.Salary
+next
+print employee.Salary
+
+This showed that the salary changed from 20000 to 15000, confirming the second bug.
+
+After identifying both issues, the faulty statements can be corrected and the program tested again using:
+
+go run .
+
+Result: Debugging helped identify the exact lines where the incorrect calculations were happening.

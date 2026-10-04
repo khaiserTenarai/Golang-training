@@ -1,0 +1,20 @@
+Application Logging
+Logging means recording important events that happen while the application is running.
+
+We use logging to track the application flow, identify errors, and help with debugging.
+
+Go provides the log package for creating logs.
+
+log.New() is used to create a custom logger.
+
+Ldate, Ltime, and Lshortfile add the date, time, and file name with line number to the log.
+
+output:
+EMPLOYEE-APP 2026/09/30 21:18:10 loggingex.go:16: application started
+EMPLOYEE-APP 2026/09/30 21:18:10 loggingex.go:17: connecting to database
+EMPLOYEE-APP 2026/09/30 21:18:10 loggingex.go:21: database connected successfully
+EMPLOYEE-APP 2026/09/30 21:18:10 loggingex.go:22: processing employee request
+EMPLOYEE-APP 2026/09/30 21:18:10 loggingex.go:26: employee request completed
+EMPLOYEE-APP 2026/09/30 21:18:10 loggingex.go:27: application finished
+
+
