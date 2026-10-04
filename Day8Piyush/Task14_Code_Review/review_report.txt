@@ -1,0 +1,70 @@
+============================================================
+  Task 14: Code Review Report — 10 Issues Identified
+============================================================
+  File Reviewed: bad_code.go
+============================================================
+
+ISSUE 1: Unexported struct fields
+  Line: type employee struct { name, salary, age }
+  Problem: Lowercase field names are unexported. Other packages can't access them.
+  Fix: Capitalize → Name, Salary, Age
+
+ISSUE 2: No input validation in createEmployee()
+  Line: func createEmployee(name, salary, age)
+  Problem: Accepts negative salary, negative age, empty name without any checks.
+  Fix: Add validation — name != "", salary >= 0, age >= 18.
+
+ISSUE 3: Magic numbers in calculateBonus()
+  Line: emp.salary * 0.30 and return 10000
+  Problem: 0.30 and 10000 are unexplained. Hard to understand and maintain.
+  Fix: Define named constants:
+    const BonusPercent = 0.30
+    const DefaultBonus = 10000
+
+ISSUE 4: Error silently ignored
+  Line: Multiple places where errors could be returned but aren't.
+  Problem: Errors not propagated; failures go unnoticed.
+  Fix: Return errors from functions; always check returned errors.
+
+ISSUE 5: Division by zero in processSalaries()
+  Line: avg := total / float64(len(employees))
+  Problem: If employees slice is empty, len is 0 → division by zero panic.
+  Fix: Check len(employees) == 0 before dividing.
+
+ISSUE 6: Goroutine leak in fetchData()
+  Line: ch <- "data" blocks forever
+  Problem: Goroutine writes to unbuffered channel, but nobody reads from it.
+    The goroutine is stuck forever (leaked).
+  Fix: Use buffered channel: ch := make(chan string, 1)
+    Or read from channel before returning.
+
+ISSUE 7: Race condition in unsafeMapAccess()
+  Line: data[val] = ... inside goroutine
+  Problem: Multiple goroutines write to shared map concurrently without sync.
+    Go maps are NOT goroutine-safe. This causes a runtime panic.
+  Fix: Use sync.Mutex to protect map access, or use sync.Map.
+
+ISSUE 8: Inefficient string concatenation
+  Line: result += name + ", "
+  Problem: String concat in loop creates a new string every iteration → O(n²).
+  Fix: Use strings.Builder:
+    var b strings.Builder
+    b.WriteString(name)
+
+ISSUE 9: Mutex copied by value
+  Line: func (m sync.Mutex) badLock()
+  Problem: Receiver is value type → mutex is COPIED on every call.
+    The copy has its own lock state, so the original is never protected.
+  Fix: Use pointer receiver: func (m *sync.Mutex) badLock()
+
+ISSUE 10: Error return value ignored
+  Line: emp, _ := getEmployeeByID(-1)
+  Problem: Using _ to discard the error. If ID is invalid, emp is empty
+    and the program continues with bad data.
+  Fix: Always check errors:
+    emp, err := getEmployeeByID(-1)
+    if err != nil { log.Fatal(err) }
+
+============================================================
+  Summary: 10/10 issues identified and documented.
+============================================================
