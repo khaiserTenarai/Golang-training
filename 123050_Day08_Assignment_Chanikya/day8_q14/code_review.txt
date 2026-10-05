@@ -1,0 +1,41 @@
+CODE REVIEW - 10 ISSUES
+
+1. Global variable
+   The employees slice is declared as a global variable.
+   Global mutable data can make the program difficult to maintain and test.
+
+2. Poor function name
+   The function processEmployee() is not very specific about what it actually does.
+   A more meaningful name should be used.
+
+3. Duplicate code
+   processEmployee() prints the employee name twice.
+   The duplicate statement should be removed.
+
+4. Hardcoded salary
+   The salary value 50000 is directly written in the code.
+   It should be stored in a variable or configuration.
+
+5. No error handling
+   The program does not handle possible errors.
+   Proper error handling should be added where required.
+
+6. No input validation
+   addEmployee() accepts an empty employee name.
+   Employee data should be validated before adding it.
+
+7. No unit tests
+   There are no tests for addEmployee() or processEmployee().
+   Unit tests should be added.
+
+8. Poor variable naming
+   The variable name i does not clearly describe its purpose.
+   A meaningful name can improve readability.
+
+9. No documentation
+   Functions such as addEmployee() and processEmployee() do not have comments.
+   Exported functions should have proper documentation.
+
+10. No separation of responsibilities
+    Employee management, processing, and output are all handled in the same file.
+    The application could be organized into separate components.
