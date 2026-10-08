@@ -14,7 +14,7 @@ type Employee struct {
 type Repository struct{}
 
 func (r *Repository) GetByID(id int) Employee {
-	return Employee{ID: id, Name: "Alice"}
+	return Employee{ID: id, Name: "Indu"}
 }
 
 // 2. Service Layer

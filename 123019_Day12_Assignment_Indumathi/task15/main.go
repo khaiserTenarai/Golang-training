@@ -98,9 +98,9 @@ func NewInMemoryRepo() EmployeeRepository {
 		nextID:    1,
 	}
 	// Seed Initial Data
-	repo.employees[1] = Employee{ID: 1, Name: "Alice Smith", Email: "alice@company.com", Department: "Engineering", Salary: 95000, CreatedAt: time.Now()}
-	repo.employees[2] = Employee{ID: 2, Name: "Bob Jones", Email: "bob@company.com", Department: "Design", Salary: 75000, CreatedAt: time.Now()}
-	repo.employees[3] = Employee{ID: 3, Name: "Charlie Brown", Email: "charlie@company.com", Department: "Engineering", Salary: 105000, CreatedAt: time.Now()}
+	repo.employees[1] = Employee{ID: 1, Name: "Indu", Email: "indu@company.com", Department: "Engineering", Salary: 95000, CreatedAt: time.Now()}
+	repo.employees[2] = Employee{ID: 2, Name: "Nan", Email: "nan@company.com", Department: "Design", Salary: 75000, CreatedAt: time.Now()}
+	repo.employees[3] = Employee{ID: 3, Name: "Aro", Email: "aro@company.com", Department: "Engineering", Salary: 105000, CreatedAt: time.Now()}
 	repo.nextID = 4
 	return repo
 }

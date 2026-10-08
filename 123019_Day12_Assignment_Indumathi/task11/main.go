@@ -12,9 +12,9 @@ type Employee struct {
 }
 
 var list = []Employee{
-	{Name: "Alice", Dept: "Engineering"},
-	{Name: "Bob", Dept: "HR"},
-	{Name: "Charlie", Dept: "Engineering"},
+	{Name: "Indu", Dept: "Engineering"},
+	{Name: "Nan", Dept: "HR"},
+	{Name: "Aro", Dept: "Engineering"},
 }
 
 func filterHandler(w http.ResponseWriter, r *http.Request) {

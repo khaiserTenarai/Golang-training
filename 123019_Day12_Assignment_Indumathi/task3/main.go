@@ -15,7 +15,7 @@ type Repository interface {
 type memoryRepo struct{}
 
 func (r *memoryRepo) FindByID(id int) (*Employee, error) {
-	return &Employee{ID: id, Name: "Bob"}, nil
+	return &Employee{ID: id, Name: "Nan"}, nil
 }
 
 // Service contains domain logic, oblivious to SQL/NoSQL storage specifics
