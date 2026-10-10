@@ -1,0 +1,13 @@
+{
+  "openapi":"3.0.3",
+  "info":{"title":"Employee Management API","version":"1.0.0","description":"Employee REST API with JWT authentication, role authorization, pagination, filtering, sorting, health and readiness."},
+  "servers":[{"url":"http://localhost:8080"}],
+  "components":{"securitySchemes":{"bearerAuth":{"type":"http","scheme":"bearer","bearerFormat":"JWT"}},"schemas":{"Employee":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"name":{"type":"string"},"email":{"type":"string"},"department":{"type":"string"},"salary":{"type":"number"}}},"LoginRequest":{"type":"object","required":["username","password"],"properties":{"username":{"type":"string"},"password":{"type":"string","format":"password"}}}}},
+  "paths":{
+    "/auth/login":{"post":{"summary":"Login","requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/LoginRequest"}}}},"responses":{"200":{"description":"JWT returned"},"401":{"description":"Invalid credentials"}}}},
+    "/employees":{"get":{"security":[{"bearerAuth":[]}],"summary":"List employees","parameters":[{"name":"page","in":"query","schema":{"type":"integer","default":1}},{"name":"pageSize","in":"query","schema":{"type":"integer","default":10}},{"name":"department","in":"query","schema":{"type":"string"}},{"name":"name","in":"query","schema":{"type":"string"}},{"name":"sortBy","in":"query","schema":{"type":"string","enum":["id","name","email","department","salary"]}},{"name":"sortOrder","in":"query","schema":{"type":"string","enum":["asc","desc"]}}],"responses":{"200":{"description":"Employee list"}}},"post":{"security":[{"bearerAuth":[]}],"summary":"Create employee","responses":{"201":{"description":"Created"},"403":{"description":"Admin only"}}}},
+    "/employees/{id}":{"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer"}}],"get":{"security":[{"bearerAuth":[]}],"summary":"Get employee","responses":{"200":{"description":"Employee"},"404":{"description":"Not found"}}},"put":{"security":[{"bearerAuth":[]}],"summary":"Update employee","responses":{"200":{"description":"Updated"},"403":{"description":"Admin only"}}},"delete":{"security":[{"bearerAuth":[]}],"summary":"Delete employee","responses":{"204":{"description":"Deleted"},"403":{"description":"Admin only"}}}},
+    "/health":{"get":{"summary":"Liveness","responses":{"200":{"description":"UP"}}}},
+    "/ready":{"get":{"summary":"Readiness","responses":{"200":{"description":"READY"},"503":{"description":"NOT_READY"}}}}
+  }
+}

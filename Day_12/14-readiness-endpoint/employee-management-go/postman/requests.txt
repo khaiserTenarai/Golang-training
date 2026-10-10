@@ -1,0 +1,7 @@
+# Employee Management API - quick request list
+# POST http://localhost:8080/employees
+# GET http://localhost:8080/employees
+# GET http://localhost:8080/employees?sort=name
+# GET http://localhost:8080/employees/1
+# PUT http://localhost:8080/employees/1
+# DELETE http://localhost:8080/employees/1
