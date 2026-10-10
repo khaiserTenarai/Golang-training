@@ -1,0 +1,6 @@
+GET /employees
+GET /employees?sort=name
+GET /employees/1
+POST /employees
+PUT /employees/1
+DELETE /employees/1
