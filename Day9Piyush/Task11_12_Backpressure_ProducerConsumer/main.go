@@ -38,7 +38,7 @@ func demoBackpressure() {
 		time.Sleep(300 * time.Millisecond) // simulate slow processing
 	}
 
-	fmt.Println("  Backpressure demo complete!\n")
+	fmt.Printf(" Backpressure demo complete!\n")
 }
 
 // ============================================================
@@ -113,7 +113,7 @@ func demoProducerConsumer() {
 		fmt.Printf("  ✓ %s\n", result)
 	}
 
-	fmt.Println("\n  Producer-Consumer demo complete!\n")
+	fmt.Printf("\n  Producer-Consumer demo complete!\n")
 }
 
 func main() {
