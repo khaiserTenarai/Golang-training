@@ -1,0 +1,28 @@
+### Login as admin
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Login as normal user
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user123"
+}
+
+### After copying the token from login, use Postman Bearer Token auth:
+### GET http://localhost:8080/employees?page=1&limit=5&sort=name&order=asc
+### GET http://localhost:8080/employees?department=IT
+### POST http://localhost:8080/employees
+### {
+###   "name": "Rahul Sharma",
+###   "email": "rahul@example.com",
+###   "department": "IT",
+###   "salary": 45000
+### }
