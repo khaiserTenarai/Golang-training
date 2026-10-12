@@ -6,7 +6,7 @@
 - Postman (optional)
 
 ## Setup
-1. Create a PostgreSQL database named `employee_db`.
+1. Create a PostgreSQL database named `emp_db_soap`.
 2. Run `schema.sql` against that database.
 3. Copy `.env.example` to `.env` and update `DATABASE_URL`.
 4. Set `JWT_SECRET` to a long random secret.
