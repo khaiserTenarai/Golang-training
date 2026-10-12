@@ -1,0 +1,107 @@
+package main
+
+import (
+	"bufio"
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"os"
+	"strings"
+	"sync"
+)
+
+type Employee struct {
+	ID         int     `json:"id"`
+	Name       string  `json:"name"`
+	Email      string  `json:"email"`
+	Department string  `json:"department"`
+	Salary     float64 `json:"salary"`
+}
+
+func ask(reader *bufio.Reader, prompt string) string {
+	fmt.Print(prompt)
+	text, _ := reader.ReadString('\n')
+	return strings.TrimSpace(text)
+}
+
+func askPort(reader *bufio.Reader) string {
+	port := ask(reader, "Port to run the server on (press Enter for 8080): ")
+	if port == "" {
+		port = "8080"
+	}
+	return port
+}
+
+var (
+	employees = []Employee{}
+	nextID    = 1
+	mu        sync.Mutex
+)
+
+func validate(e Employee) []string {
+	var problems []string
+
+	if strings.TrimSpace(e.Name) == "" {
+		problems = append(problems, "name is required")
+	}
+	if !strings.Contains(e.Email, "@") || !strings.Contains(e.Email, ".") {
+		problems = append(problems, "email must look like name@example.com")
+	}
+	if strings.TrimSpace(e.Department) == "" {
+		problems = append(problems, "department is required")
+	}
+	if e.Salary <= 0 {
+		problems = append(problems, "salary must be greater than 0")
+	}
+	return problems
+}
+
+func employeesHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	switch r.Method {
+	case http.MethodGet:
+		mu.Lock()
+		defer mu.Unlock()
+		json.NewEncoder(w).Encode(employees)
+
+	case http.MethodPost:
+		var e Employee
+		if err := json.NewDecoder(r.Body).Decode(&e); err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			json.NewEncoder(w).Encode(map[string]string{"error": "could not read the JSON body"})
+			return
+		}
+
+		if problems := validate(e); len(problems) > 0 {
+			w.WriteHeader(http.StatusBadRequest)
+			json.NewEncoder(w).Encode(map[string][]string{"errors": problems})
+			return
+		}
+
+		mu.Lock()
+		e.ID = nextID
+		nextID++
+		employees = append(employees, e)
+		mu.Unlock()
+
+		w.WriteHeader(http.StatusCreated)
+		json.NewEncoder(w).Encode(e)
+
+	default:
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		json.NewEncoder(w).Encode(map[string]string{"error": "method not allowed"})
+	}
+}
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+	port := askPort(reader)
+
+	http.HandleFunc("/employee", employeesHandler)
+
+	fmt.Println("Server running on port", port)
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
+		fmt.Println("Server stopped:", err)
+	}
+}
