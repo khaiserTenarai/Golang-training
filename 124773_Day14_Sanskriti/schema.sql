@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS employees (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    department VARCHAR(100) NOT NULL,
+    salary NUMERIC(12, 2) NOT NULL CHECK (salary >= 0)
+);
