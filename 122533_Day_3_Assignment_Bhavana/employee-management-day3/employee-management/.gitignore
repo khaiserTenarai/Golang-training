@@ -1,0 +1,8 @@
+# Compiled binaries
+/employee-management
+*.exe
+*.test
+
+# OS / editor junk
+.DS_Store
+.vscode/
