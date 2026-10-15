@@ -1,0 +1,77 @@
+EMPLOYEE MANAGEMENT - GRAPHQL TEST INPUTS
+
+GraphQL URL:
+http://localhost:8081/graphql
+
+1. GET ALL EMPLOYEES
+
+query {
+  employees {
+    id
+    name
+    email
+    department
+    salary
+  }
+}
+
+2. CREATE EMPLOYEE
+
+mutation {
+  createEmployee(input: {
+    name: "Priya"
+    email: "priya.graphql@example.com"
+    department: "Finance"
+    salary: 65000
+  }) {
+    id
+    name
+    email
+    department
+    salary
+  }
+}
+
+3. GET EMPLOYEE BY ID
+
+query {
+  employee(id: "1") {
+    id
+    name
+    email
+    department
+    salary
+  }
+}
+
+4. UPDATE EMPLOYEE
+
+mutation {
+  updateEmployee(id: "1", input: {
+    name: "Priya Sharma"
+    email: "priya.graphql@example.com"
+    department: "Technology"
+    salary: 70000
+  }) {
+    id
+    name
+    email
+    department
+    salary
+  }
+}
+
+5. DELETE EMPLOYEE
+
+mutation {
+  deleteEmployee(id: "1")
+}
+
+Expected response:
+{
+  "data": {
+    "deleteEmployee": true
+  }
+}
+
+Note: Replace "1" with the employee ID returned by createEmployee. Paste each query or mutation into the GraphiQL page at http://localhost:8081/graphql.

@@ -1,0 +1,158 @@
+# GraphQL Employee Management System - Test Cases
+
+URL: `http://localhost:8081/graphql`
+
+## 1. Get All Employees — Normal Type
+
+```graphql
+{
+  employees {
+    id
+    name
+    email
+    department
+    salary
+  }
+}
+```
+
+## 2. Get All Employees — Department Type
+
+```graphql
+{
+  employees {
+    id
+    name
+    departmentDetails {
+      name
+    }
+  }
+}
+```
+
+## 3. Get Employee by ID
+
+```graphql
+{
+  employee(id: "1") {
+    id
+    name
+    email
+    department
+    departmentDetails {
+      name
+    }
+    salary
+  }
+}
+```
+
+## 4. Create Employee
+
+```graphql
+mutation {
+  createEmployee(input: {
+    name: "Amit"
+    email: "amit@example.com"
+    department: "IT"
+    salary: 75000
+  }) {
+    id
+    name
+    email
+    department
+    departmentDetails {
+      name
+    }
+    salary
+  }
+}
+```
+
+## 5. Update Employee
+
+```graphql
+mutation {
+  updateEmployee(id: "1", input: {
+    name: "Amit Kumar"
+    email: "amit@example.com"
+    department: "Finance"
+    salary: 80000
+  }) {
+    id
+    name
+    email
+    department
+    departmentDetails {
+      name
+    }
+    salary
+  }
+}
+```
+
+## 6. Delete Employee
+
+```graphql
+mutation {
+  deleteEmployee(id: "1")
+}
+```
+
+## 7. Create Employee with HR Department
+
+```graphql
+mutation {
+  createEmployee(input: {
+    name: "Priya"
+    email: "priya@example.com"
+    department: "HR"
+    salary: 60000
+  }) {
+    id
+    name
+    department
+    departmentDetails {
+      name
+    }
+  }
+}
+```
+
+## 8. Test Invalid Employee ID
+
+```graphql
+{
+  employee(id: "abc") {
+    id
+    name
+  }
+}
+```
+
+Expected: An error indicating that the ID must be a positive integer.
+
+## 9. Test Department Type
+
+```graphql
+{
+  employees {
+    name
+    departmentDetails {
+      name
+    }
+  }
+}
+```
+
+Expected: Each employee's department is returned inside `departmentDetails`.
+
+## Important Notes
+
+- Start the server before running these tests.
+- Use the GraphiQL page or send POST requests to `/graphql`.
+- Replace employee ID `"1"` with an existing employee ID when testing update, get-by-ID, or delete.
+- Run the delete test last if you still need that employee for other tests.
+- `department` is a normal String field.
+- `departmentDetails` is an object of type `Department`.
+- Both fields show the department value from the employee record.
