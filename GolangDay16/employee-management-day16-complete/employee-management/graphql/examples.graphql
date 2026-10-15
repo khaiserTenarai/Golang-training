@@ -1,0 +1,210 @@
+# ============================================================
+# Day 16 - GraphQL examples (paste one operation at a time)
+# Open http://localhost:8080/playground
+# ============================================================
+
+# ---------- 1. Create departments (mutation + input type) ----------
+mutation {
+  createDepartment(input: { name: "IT", description: "Software team" }) {
+    id
+    name
+    description
+  }
+}
+
+mutation {
+  createDepartment(input: { name: "HR" }) {
+    id
+    name
+  }
+}
+
+# ---------- 2. Create employee (inline input) ----------
+mutation {
+  createEmployee(input: {
+    name: "Amit"
+    email: "amit@example.com"
+    salary: 75000
+    departmentId: 1
+  }) {
+    id
+    name
+    email
+    salary
+    createdAt
+    department {
+      id
+      name
+    }
+  }
+}
+
+# ---------- 3. Create employee using VARIABLES ----------
+# Variables (bottom-left panel in the Playground):
+# { "input": { "name": "Riya", "email": "riya@example.com", "salary": 82000, "departmentId": "1" } }
+mutation CreateEmployee($input: EmployeeInput!) {
+  createEmployee(input: $input) {
+    id
+    name
+    department {
+      name
+    }
+  }
+}
+
+# ---------- 4. Employee list ----------
+query {
+  employees {
+    id
+    name
+    email
+    salary
+    department {
+      name
+    }
+  }
+}
+
+# ---------- 5. List with ARGUMENTS (filter + paging) ----------
+query {
+  employees(departmentId: 1, search: "am", limit: 10, offset: 0) {
+    id
+    name
+    email
+  }
+}
+
+# ---------- 6. List with variables ----------
+# Variables: { "dept": "1", "text": "a", "limit": 5 }
+query FilterEmployees($dept: ID, $text: String, $limit: Int) {
+  employees(departmentId: $dept, search: $text, limit: $limit) {
+    id
+    name
+  }
+}
+
+# ---------- 7. One employee (argument + variable) ----------
+query {
+  employee(id: 1) {
+    id
+    name
+    email
+    salary
+    createdAt
+    department {
+      id
+      name
+      description
+    }
+  }
+}
+
+# Variables: { "id": "1" }
+query GetEmployee($id: ID!) {
+  employee(id: $id) {
+    id
+    name
+    department {
+      name
+    }
+  }
+}
+
+# ---------- 8. Departments with their employees (nested resolver) ----------
+query {
+  departments {
+    id
+    name
+    employees {
+      id
+      name
+    }
+  }
+}
+
+query {
+  department(id: 1) {
+    name
+    employees {
+      name
+      salary
+    }
+  }
+}
+
+# ---------- 9. Update ----------
+mutation {
+  updateEmployee(id: 1, input: {
+    name: "Amit Updated"
+    email: "amit.updated@example.com"
+    salary: 85000
+    departmentId: 2
+  }) {
+    id
+    name
+    salary
+    department {
+      name
+    }
+  }
+}
+
+# ---------- 10. Delete ----------
+mutation {
+  deleteEmployee(id: 1)
+}
+
+# ============================================================
+# ERROR HANDLING examples
+# Every error has  message  and  extensions.code
+# ============================================================
+
+# Not found -> code NOT_FOUND, data.employee is null
+query {
+  employee(id: 9999) {
+    id
+    name
+  }
+}
+# {
+#   "data": { "employee": null },
+#   "errors": [ { "message": "employee not found", "extensions": { "code": "NOT_FOUND" } } ]
+# }
+
+# Validation error -> code BAD_USER_INPUT ("valid email is required")
+mutation {
+  createEmployee(input: { name: "Bad", email: "not-an-email", salary: 1000, departmentId: 1 }) {
+    id
+  }
+}
+
+# Unknown department -> code BAD_USER_INPUT ("department does not exist")
+mutation {
+  createEmployee(input: { name: "Bad", email: "bad@example.com", salary: 1000, departmentId: 999 }) {
+    id
+  }
+}
+
+# Duplicate email -> code CONFLICT ("email already exists")
+# (run example 2 twice)
+
+# Invalid id -> code BAD_USER_INPUT ("invalid id")
+query {
+  employee(id: "abc") {
+    id
+  }
+}
+
+# Invalid paging argument -> code BAD_USER_INPUT ("limit must be between 1 and 100")
+query {
+  employees(limit: 500) {
+    id
+  }
+}
+
+# Missing required field -> rejected by the GraphQL schema itself (before any resolver runs)
+mutation {
+  createEmployee(input: { name: "No email", salary: 1000, departmentId: 1 }) {
+    id
+  }
+}
