@@ -1,0 +1,57 @@
+# Reference copy of the schema built in graphql/schema.go (SDL form)
+
+scalar DateTime            # custom scalar (RFC3339 string)
+# built-in scalars used: ID, String, Int, Float, Boolean
+
+type Department {
+  id: ID!
+  name: String!
+  location: String!
+  employees: [Employee!]!
+  employeeCount: Int!
+}
+
+type Employee {
+  id: ID!
+  name: String!
+  email: String!
+  salary: Float!
+  active: Boolean!
+  joinedAt: DateTime!
+  department: Department!
+}
+
+input CreateEmployeeInput {
+  name: String!
+  email: String!
+  salary: Float!
+  departmentId: ID!
+  active: Boolean = true
+}
+
+input UpdateEmployeeInput {   # all optional -> partial update
+  name: String
+  email: String
+  salary: Float
+  departmentId: ID
+  active: Boolean
+}
+
+type Query {
+  employee(id: ID!): Employee
+  employees(
+    departmentId: ID
+    search: String
+    joinedAfter: DateTime
+    limit: Int = 10
+    offset: Int = 0
+  ): [Employee!]!
+  department(id: ID!): Department
+  departments: [Department!]!
+}
+
+type Mutation {
+  createEmployee(input: CreateEmployeeInput!): Employee!
+  updateEmployee(id: ID!, input: UpdateEmployeeInput!): Employee!
+  deleteEmployee(id: ID!): Boolean!
+}

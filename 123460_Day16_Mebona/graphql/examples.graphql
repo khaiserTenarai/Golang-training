@@ -1,0 +1,31 @@
+# ---- Queries -------------------------------------------------------------
+query AllEmployees {
+  employees { id name email salary joinedAt department { name location } }
+}
+
+query Filtered {
+  employees(departmentId: "1", search: "r", limit: 5, offset: 0) { id name }
+}
+
+# Variables: { "id": "1" }
+query GetEmployee($id: ID!) {
+  employee(id: $id) { id name email department { name } }
+}
+
+query DepartmentWithEmployees {
+  department(id: "1") { name employeeCount employees { name } }
+}
+
+# ---- Mutations -----------------------------------------------------------
+# Variables: { "input": { "name": "John", "email": "john@gmail.com", "salary": 70000, "departmentId": "3" } }
+mutation Create($input: CreateEmployeeInput!) {
+  createEmployee(input: $input) { id name email active department { name } }
+}
+
+# Variables: { "id": "1", "input": { "salary": 80000 } }
+mutation Update($id: ID!, $input: UpdateEmployeeInput!) {
+  updateEmployee(id: $id, input: $input) { id name salary }
+}
+
+# Variables: { "id": "2" }
+mutation Delete($id: ID!) { deleteEmployee(id: $id) }
