@@ -1,0 +1,13 @@
+# Ignore local environment files and secrets.
+.env
+.env.*
+!.env.example
+
+# Ignore compiled application files.
+employee-api
+*.exe
+
+# Ignore editor and operating system files.
+.vscode/
+.idea/
+.DS_Store

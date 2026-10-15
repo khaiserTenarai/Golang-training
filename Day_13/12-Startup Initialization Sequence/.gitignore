@@ -1,0 +1,11 @@
+# Never commit local environment settings or passwords.
+.env
+
+# Ignore compiled application binaries.
+employee-api
+*.exe
+
+# Ignore IDE files.
+.vscode/
+.idea/
+.DS_Store

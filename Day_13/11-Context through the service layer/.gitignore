@@ -1,0 +1,6 @@
+.env
+employee-api
+*.exe
+.vscode/
+.idea/
+.DS_Storew
