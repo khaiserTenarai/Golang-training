@@ -1,0 +1,176 @@
+# ==================================================================
+# Day 17 - GraphQL examples (paste ONE operation at a time)
+# Open http://localhost:8080/playground
+#
+# STEP 1: run a login mutation (example 1) and copy the token.
+# STEP 2: open the "HTTP HEADERS" tab at the bottom of the Playground and paste:
+#         { "Authorization": "Bearer PASTE_YOUR_TOKEN_HERE" }
+# STEP 3: now every other example works. (login needs no token.)
+# ==================================================================
+
+# ---------- 1. LOGIN (public) ----------
+# admin / admin123  -> role ADMIN (can read and change data)
+# user  / user123   -> role USER  (can only read data)
+mutation {
+  login(username: "admin", password: "admin123") {
+    token
+    username
+    role
+  }
+}
+
+# ---------- 2. Who am I? (needs a token) ----------
+query {
+  me {
+    username
+    role
+  }
+}
+
+# ---------- 3. Create a department (ADMIN only) ----------
+mutation {
+  createDepartment(input: { name: "IT", description: "Software team" }) {
+    id
+    name
+  }
+}
+
+# ---------- 4. Create an employee (ADMIN only) with VARIABLES ----------
+# Variables panel:
+# { "input": { "name": "Riya", "email": "riya@example.com", "salary": 82000, "departmentId": "1" } }
+mutation CreateEmployee($input: EmployeeInput!) {
+  createEmployee(input: $input) {
+    id
+    name
+    email
+    salary
+    createdAt
+    department {
+      id
+      name
+    }
+  }
+}
+
+# ---------- 5. PAGINATION: page 1, 5 employees per page ----------
+query {
+  employees(page: 1, pageSize: 5) {
+    items {
+      id
+      name
+    }
+    totalCount
+    page
+    pageSize
+    totalPages
+    hasNext
+  }
+}
+
+# ---------- 6. FILTERING ----------
+query {
+  employees(search: "ri", departmentId: 1, minSalary: 50000, maxSalary: 100000) {
+    items {
+      name
+      email
+      salary
+    }
+    totalCount
+  }
+}
+
+# ---------- 7. SORTING (highest salary first) ----------
+query {
+  employees(sortBy: SALARY, sortOrder: DESC) {
+    items {
+      name
+      salary
+    }
+  }
+}
+
+# ---------- 8. ALL THREE TOGETHER + nested department ----------
+query {
+  employees(page: 1, pageSize: 3, search: "a", sortBy: NAME, sortOrder: ASC) {
+    items {
+      name
+      department {
+        name
+      }
+    }
+    totalCount
+    hasNext
+  }
+}
+
+# ---------- 9. Same query with VARIABLES ----------
+# Variables:
+# { "page": 1, "size": 5, "text": "a", "by": "SALARY", "order": "DESC" }
+query SearchEmployees($page: Int, $size: Int, $text: String, $by: EmployeeSortField, $order: SortOrder) {
+  employees(page: $page, pageSize: $size, search: $text, sortBy: $by, sortOrder: $order) {
+    items {
+      name
+      salary
+    }
+    totalPages
+  }
+}
+
+# ---------- 10. One employee ----------
+query {
+  employee(id: 1) {
+    id
+    name
+    email
+    department {
+      name
+      description
+    }
+  }
+}
+
+# ---------- 11. Departments with their employees (nested) ----------
+query {
+  departments {
+    id
+    name
+    employees {
+      name
+    }
+  }
+}
+
+# ---------- 12. Update (ADMIN only) ----------
+mutation {
+  updateEmployee(id: 1, input: {
+    name: "Riya Updated"
+    email: "riya@example.com"
+    salary: 90000
+    departmentId: 1
+  }) {
+    id
+    name
+    salary
+  }
+}
+
+# ---------- 13. Delete (ADMIN only) ----------
+mutation {
+  deleteEmployee(id: 1)
+}
+
+# ==================================================================
+# SECURITY / ERROR examples. Look at  errors[0].extensions.code
+# ==================================================================
+
+# No token in the headers        -> UNAUTHENTICATED  ("authentication required")
+# Logged in as "user" and running create / update / delete
+#                                -> FORBIDDEN        ("you do not have permission to do this")
+# Wrong password in login        -> UNAUTHENTICATED  ("invalid username or password")
+# employee(id: 9999)             -> NOT_FOUND
+# employee(id: "abc")            -> BAD_USER_INPUT   ("invalid id")
+# email "not-an-email"           -> BAD_USER_INPUT   ("valid email is required")
+# employees(pageSize: 500)       -> BAD_USER_INPUT   ("pageSize must be between 1 and 100")
+# employees(minSalary: 9, maxSalary: 1) -> BAD_USER_INPUT
+# same email twice               -> CONFLICT         ("email already exists")
+# sortBy: PASSWORD               -> rejected by the schema (not in the enum)
