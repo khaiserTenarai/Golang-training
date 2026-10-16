@@ -1,0 +1,124 @@
+================================================================
+  Day 18 Mini Project (Task 15)
+  Complete Employee Microservices Architecture — Technical Design
+================================================================
+
+1. SYSTEM OVERVIEW
+==================
+  The Employee Management Platform is decomposed from a monolith
+  into 3 core microservices + 1 API Gateway:
+
+  ┌──────────┐     ┌───────────────────────┐
+  │  Client   │────→│     API Gateway       │ :8080
+  │ (Browser/ │     │  - Auth validation    │
+  │  Postman) │     │  - Rate limiting      │
+  └──────────┘     │  - Request routing    │
+                    │  - Service discovery  │
+                    └───┬───────┬───────┬──┘
+                        │       │       │
+              ┌─────────┘       │       └─────────┐
+              ▼                 ▼                 ▼
+  ┌──────────────────┐ ┌──────────────┐ ┌──────────────┐
+  │ Employee Service │ │ Dept Service │ │ Auth Service │
+  │     :8081        │ │    :8082     │ │    :8083     │
+  │ ┌──────────────┐ │ │ ┌──────────┐ │ │ ┌──────────┐ │
+  │ │  Employee DB │ │ │ │  Dept DB │ │ │ │  User DB │ │
+  │ └──────────────┘ │ │ └──────────┘ │ │ └──────────┘ │
+  └──────────────────┘ └──────────────┘ └──────────────┘
+         │                                     │
+         └──────── Event Bus (Async) ──────────┘
+
+2. TASK MAPPING
+===============
+
+  Task 1 — Monolith Analysis:
+    The original monolith had all logic in one binary: employee CRUD,
+    departments, authentication, authorization. Drawbacks: single DB,
+    tight coupling, deploy-everything-at-once, hard to scale independently.
+
+  Task 2 — Microservice Boundaries:
+    Boundaries identified by business capability:
+    - Employee Management (CRUD, salary, onboarding)
+    - Department Management (org structure, locations)
+    - Authentication/Authorization (users, tokens, roles)
+
+  Task 3 — Bounded Contexts:
+    Employee Context: Employee, Salary, Position
+    Department Context: Department, Location, Budget
+    Auth Context: User, Token, Role, Permission
+
+  Task 4 — Employee Service: CRUD, salary, calls dept-service for enrichment
+  Task 5 — Department Service: CRUD departments, standalone
+  Task 6 — Auth Service: Login, token validation, role management
+
+  Task 7 — Database-per-Service:
+    Each service owns its data (in-memory maps in this demo).
+    In production: Employee→PostgreSQL, Dept→PostgreSQL, Auth→Redis+PostgreSQL.
+    No direct cross-DB access. Services communicate via API or events.
+
+  Task 8 — Synchronous REST:
+    Employee-service calls department-service via HTTP GET to enrich responses.
+    API Gateway proxies all client requests to backend services.
+
+  Task 9 — Asynchronous Communication:
+    Event bus (pub/sub) for: employee.created, employee.deleted, etc.
+    Services subscribe to events they care about. Fire-and-forget.
+
+  Task 10 — API Gateway:
+    Single entry point (port 8080). Handles:
+    - Routing to correct service
+    - Authentication (calls auth-service to validate tokens)
+    - Authorization (role-based write protection)
+    - Service health aggregation
+
+  Task 11 — Service Discovery:
+    In-memory registry in gateway. GET /services shows all registered services.
+    Health checks poll each service's /health endpoint.
+
+  Task 12 — Distributed Transactions:
+    Problem: Cross-service operations can partially fail.
+    Solution: Saga pattern with compensating transactions.
+
+  Task 13 — Saga Workflow:
+    Example: Employee Onboarding
+    Step 1: Create employee → Compensate: Delete employee
+    Step 2: Assign department → Compensate: Unassign
+    Step 3: Create email → Compensate: Deactivate email
+    Step 4: Provision equipment → Compensate: Return equipment
+    If any step fails, all completed steps roll back in reverse.
+
+  Task 14 — Observability:
+    Each service logs: [ServiceName] method path status duration.
+    Gateway adds X-Proxied-By header. Health endpoints on all services.
+    In production: add Prometheus metrics, distributed tracing (Jaeger),
+    centralized logging (ELK stack), and alerting.
+
+3. HOW TO RUN (4 terminals)
+===========================
+  Terminal 1:  cd auth-service       && go run main.go   (port 8083)
+  Terminal 2:  cd department-service && go run main.go   (port 8082)
+  Terminal 3:  cd employee-service   && go run main.go   (port 8081)
+  Terminal 4:  cd api-gateway        && go run main.go   (port 8080)
+  
+  Async demo:  cd event-bus          && go run main.go
+
+4. API FLOW
+===========
+  1. Client → POST /auth/login → Gateway → Auth-Service → token
+  2. Client → GET /employees (Bearer token) → Gateway → validates token
+     via Auth-Service → proxies to Employee-Service → Employee-Service
+     calls Department-Service for each employee → returns enriched data
+
+5. PRODUCTION CONSIDERATIONS
+============================
+  - Replace in-memory stores with PostgreSQL per service
+  - Use Redis for auth token store
+  - Use RabbitMQ/Kafka for event bus instead of in-memory
+  - Add Consul/etcd for service discovery
+  - Add circuit breakers (resilience)
+  - Add rate limiting in API gateway
+  - Deploy each service in its own Docker container
+  - Use Kubernetes for orchestration
+  - Add Prometheus + Grafana for monitoring
+  - Add Jaeger for distributed tracing
+================================================================
