@@ -99,7 +99,40 @@ func (ctrl *EmployeeController) GetEmployees(c *gin.Context) {
 	})
 }
 
-func (ctrl *EmployeeController) UploadAvatar(c *gin.Context) {
+
+
+func (ctrl *EmployeeController) DeleteEmployee(c *gin.Context) {
+	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid employee ID"})
+		return
+	}
+
+	if err := ctrl.service.DeleteEmployee(c.Request.Context(), id); err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Employee deleted successfully"})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*func (ctrl *EmployeeController) UploadAvatar(c *gin.Context) {
 	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid employee ID"})
@@ -126,18 +159,4 @@ func (ctrl *EmployeeController) UploadAvatar(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"message": "Avatar uploaded successfully", "path": dst})
-}
-
-func (ctrl *EmployeeController) DeleteEmployee(c *gin.Context) {
-	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid employee ID"})
-		return
-	}
-
-	if err := ctrl.service.DeleteEmployee(c.Request.Context(), id); err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
-		return
-	}
-	c.JSON(http.StatusOK, gin.H{"message": "Employee deleted successfully"})
 }
