@@ -1,0 +1,54 @@
+### Day 17 – GraphQL Testing
+
+**URL:** `http://localhost:8081/graphql`
+
+```http
+### 1. Get All Employees
+POST http://localhost:8081/graphql
+Content-Type: application/json
+
+{
+  "query": "{ employees { id name email department salary } }"
+}
+
+### 2. Get Employee By ID
+POST http://localhost:8081/graphql
+Content-Type: application/json
+
+{
+  "query": "{ employee(id: \"1\") { id name email department salary } }"
+}
+
+### 3. Create Employee
+POST http://localhost:8081/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation { createEmployee(input: { name: \"Test User\", email: \"testuser17@example.com\", department: \"IT\", salary: 50000 }) { id name email department salary } }"
+}
+
+### 4. Update Employee
+POST http://localhost:8081/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation { updateEmployee(id: \"1\", input: { name: \"Updated Test User\", email: \"testuser17@example.com\", department: \"Engineering\", salary: 60000 }) { id name email department salary } }"
+}
+
+### 5. Delete Employee
+POST http://localhost:8081/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation { deleteEmployee(id: \"1\") }"
+}
+```
+
+**How to run it:**
+1. Start your application using `go run .`.
+2. Open `graphql_test.http` in VS Code with the REST Client extension installed.
+3. Click **Send Request** above each request.
+4. Replace ID `1` with a valid employee ID where necessary.
+5. Run the create request before update and delete. Use the ID returned by create.
+
+If your application uses a different port, replace `8081` with your configured port.
