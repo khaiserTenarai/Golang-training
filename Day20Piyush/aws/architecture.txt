@@ -1,0 +1,64 @@
+================================================================
+  Tasks 1, 2, 3, 14: AWS Concepts & Architecture
+================================================================
+
+TASK 1: AWS REGIONS
+===================
+An AWS Region is a geographic area (e.g., ap-south-1 = Mumbai).
+Each region is isolated from others for fault tolerance.
+Choose a region closest to your users for low latency.
+Key regions: us-east-1 (Virginia), eu-west-1 (Ireland), ap-south-1 (Mumbai).
+
+TASK 2: AVAILABILITY ZONES (AZs)
+=================================
+Each Region has 2-6 Availability Zones (e.g., ap-south-1a, ap-south-1b).
+Each AZ is a separate data center with independent power, cooling, networking.
+Deploying across multiple AZs provides high availability.
+If one AZ goes down, the other continues serving traffic.
+
+TASK 3: AWS ARCHITECTURE DIAGRAM
+==================================
+
+                    ┌─────────────────────────────────────────┐
+                    │              AWS Cloud (ap-south-1)     │
+                    │                                         │
+  Internet          │  ┌─────────────────────────────────┐    │
+     │              │  │           VPC (10.0.0.0/16)     │    │
+     ▼              │  │                                 │    │
+┌─────────┐         │  │  ┌──────────────┐               │    │
+│  Users   │────────┼──┼─→│ ALB (public) │               │    │
+└─────────┘         │  │  └──────┬───────┘               │    │
+                    │  │         │                        │    │
+                    │  │    ┌────┴─────────────┐          │    │
+                    │  │    │   Public Subnets  │          │    │
+                    │  │    │  ┌──────┐ ┌──────┐│          │    │
+                    │  │    │  │EC2-1 │ │EC2-2 ││          │    │
+                    │  │    │  │(AZ-a)│ │(AZ-b)││          │    │
+                    │  │    │  └──┬───┘ └──┬───┘│          │    │
+                    │  │    └─────┼────────┼────┘          │    │
+                    │  │          │        │               │    │
+                    │  │    ┌─────┴────────┴────┐          │    │
+                    │  │    │  Private Subnets   │          │    │
+                    │  │    │  ┌──────────────┐  │          │    │
+                    │  │    │  │ RDS PostgreSQL│  │          │    │
+                    │  │    │  │ (Multi-AZ)   │  │          │    │
+                    │  │    │  └──────────────┘  │          │    │
+                    │  │    └────────────────────┘          │    │
+                    │  │                                    │    │
+                    │  │    ┌────────┐  ┌──────────────┐    │    │
+                    │  │    │   S3   │  │  CloudWatch  │    │    │
+                    │  │    │(reports)│  │  (logs/metrics)│   │    │
+                    │  │    └────────┘  └──────────────┘    │    │
+                    │  └─────────────────────────────────┘    │
+                    └─────────────────────────────────────────┘
+
+TASK 14: LOAD-BALANCED ARCHITECTURE
+=====================================
+- Application Load Balancer (ALB) distributes traffic across EC2 instances
+- EC2 instances in 2 AZs for high availability
+- Auto Scaling Group adjusts instance count based on CPU/traffic
+- RDS Multi-AZ for database failover
+- S3 for static file storage (reports)
+- CloudWatch for monitoring, logging, and alerting
+- Security Groups as virtual firewalls per component
+================================================================
