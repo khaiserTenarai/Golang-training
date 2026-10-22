@@ -1,0 +1,58 @@
+# 1. Query List of Employees using variables
+query GetEmployees($sortBy: String) {
+  employees(sort: $sortBy) {
+    id
+    name
+    email
+    department {
+      id
+      name
+    }
+    salary
+  }
+}
+
+# 2. Query Single Employee
+query GetEmployeeByID($empId: Int!) {
+  employee(id: $empId) {
+    id
+    name
+    email
+    department {
+      id
+      name
+    }
+    salary
+  }
+}
+
+# 3. Create Employee Mutation with GraphQL Variables
+mutation CreateNewEmployee($input: EmployeeInput!) {
+  createEmployee(input: $input) {
+    id
+    name
+    email
+    department {
+      id
+      name
+    }
+    salary
+  }
+}
+
+# 4. Update Employee Mutation
+mutation UpdateExistingEmployee($id: Int!, $input: EmployeeInput!) {
+  updateEmployee(id: $id, input: $input) {
+    id
+    name
+    department {
+      name
+    }
+    salary
+  }
+}
+
+# 5. Delete Employee Mutation
+mutation RemoveEmployee($id: Int!) {
+  deleteEmployee(id: $id)
+}

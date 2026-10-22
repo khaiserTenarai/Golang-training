@@ -1,0 +1,71 @@
+query GetEmployee($id: Int!) {
+  employee(id: $id) {
+    id
+    name
+    email
+    salary
+    department {
+      name
+      location
+    }
+  }
+}
+
+//variable
+{
+  "id": 1
+}
+
+
+mutation CreateEmployee($input: CreateEmployeeInput!) {
+  createEmployee(input: $input) {
+    id
+    name
+    email
+    salary
+    department {
+      name
+    }
+  }
+}
+
+//variable
+{
+  "input": {
+    "name": "fund",
+    "email": "fund@example.com",
+    "salary": 92000,
+    "departmentId": "d1"
+  }
+}
+
+
+
+mutation UpdateEmployee($id: Int!, $input: UpdateEmployeeInput!) {
+  updateEmployee(id: $id, input: $input) {
+    id
+    name
+    salary
+    isActive
+  }
+}
+
+//variable
+{
+  "id": 1,
+  "input": {
+    "salary": 95000,
+    "isActive": true
+  }
+}
+
+
+
+mutation DeleteEmployee($id: Int!) {
+  deleteEmployee(id: $id)
+}
+
+//variable
+{
+  "id": 2
+}
