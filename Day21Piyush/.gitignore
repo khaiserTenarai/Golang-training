@@ -1,0 +1,34 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+employee-api
+
+# Go
+/vendor/
+go.sum
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# AWS / Secrets
+.env
+*.pem
+*.key
+.aws/
+
+# Terraform
+.terraform/
+*.tfstate*
+
+# Internal docs (not for repository)
+flow.md
+run.md
+decisions.md

@@ -1,0 +1,41 @@
+================================================================
+  Task 13: AWS Security Checklist
+================================================================
+
+NETWORK SECURITY:
+  ✓ VPC with public/private subnets
+  ✓ RDS in private subnet (no public access)
+  ✓ Security groups: ALB→EC2→RDS chain (least access)
+  ✓ No 0.0.0.0/0 on RDS or EC2 app ports
+  ✓ SSH (22) restricted to office IP only
+  ✓ HTTPS enforced on ALB (TLS certificate)
+
+IDENTITY & ACCESS:
+  ✓ IAM roles for EC2 (not access keys)
+  ✓ Least privilege policies
+  ✓ MFA enabled on root and admin accounts
+  ✓ No hardcoded credentials in code
+  ✓ Secrets in AWS Secrets Manager
+  ✓ Rotate credentials every 90 days
+
+DATA PROTECTION:
+  ✓ RDS encryption at rest (KMS)
+  ✓ S3 server-side encryption (SSE-S3)
+  ✓ S3 bucket policy blocks public access
+  ✓ TLS in transit (HTTPS, SSL to RDS)
+  ✓ Database passwords in Secrets Manager
+
+MONITORING & AUDITING:
+  ✓ CloudTrail enabled (API audit log)
+  ✓ CloudWatch Logs for application
+  ✓ CloudWatch Alarms for anomalies
+  ✓ VPC Flow Logs enabled
+  ✓ GuardDuty for threat detection
+
+APPLICATION:
+  ✓ Input validation on all endpoints
+  ✓ SQL parameterized queries ($1, $2 — no string concat)
+  ✓ Error messages don't expose internals
+  ✓ Health endpoint doesn't expose sensitive data
+  ✓ Dependencies updated regularly
+================================================================

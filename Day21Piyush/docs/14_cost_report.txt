@@ -1,0 +1,40 @@
+================================================================
+  Task 14: AWS Cost-Awareness Report
+================================================================
+
+ESTIMATED MONTHLY COST (ap-south-1, minimal setup):
+
+  Service            | Config            | Monthly Cost (USD)
+  ───────────────────┼───────────────────┼───────────────────
+  EC2 (2x t2.micro)  | On-Demand         | $0 (free tier) or ~$17
+  RDS (db.t3.micro)  | Single-AZ, 20GB   | $0 (free tier) or ~$15
+  S3                 | <1GB storage       | ~$0.02
+  ALB                | 1 ALB + LCUs       | ~$18
+  CloudWatch         | Basic monitoring   | $0 (free tier)
+  Secrets Manager    | 1 secret           | $0.40
+  Data Transfer      | <1GB out           | $0
+  ───────────────────┴───────────────────┴───────────────────
+  TOTAL (free tier)  |                    | ~$0.42/month
+  TOTAL (no free)    |                    | ~$50/month
+
+COST OPTIMIZATION TIPS:
+  1. Use free tier (12 months): t2.micro EC2, db.t3.micro RDS, 5GB S3
+  2. Use Reserved Instances for production (save 30-60%)
+  3. Set up AWS Budgets alerts at $5, $20, $50
+  4. Stop dev instances when not in use
+  5. Use S3 Lifecycle rules to archive old reports
+  6. Monitor with Cost Explorer weekly
+  7. Use Spot Instances for non-critical workloads
+  8. Right-size instances based on CloudWatch CPU metrics
+
+COMMANDS:
+  aws ce get-cost-and-usage \
+    --time-period Start=2024-01-01,End=2024-01-31 \
+    --granularity MONTHLY \
+    --metrics "BlendedCost" \
+    --group-by Type=DIMENSION,Key=SERVICE
+
+  aws budgets create-budget \
+    --account-id YOUR_ACCOUNT_ID \
+    --budget file://budget.json
+================================================================

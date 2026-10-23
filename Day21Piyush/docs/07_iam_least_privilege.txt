@@ -1,0 +1,51 @@
+================================================================
+  Task 7: IAM Least Privilege Review
+================================================================
+
+PRINCIPLE: Grant only the minimum permissions needed.
+
+GOOD (Least Privilege):
+  {
+    "Effect": "Allow",
+    "Action": "s3:PutObject",
+    "Resource": "arn:aws:s3:::day21-bucket/reports/*"
+  }
+  → Only allows uploading to the /reports/ prefix in one specific bucket.
+
+BAD (Over-Privileged):
+  {
+    "Effect": "Allow",
+    "Action": "s3:*",
+    "Resource": "*"
+  }
+  → Allows ALL S3 operations on ALL buckets. Never do this.
+
+OUR APPLICATION'S IAM POLICY:
+
+  EC2 Instance Role needs:
+  ┌──────────────────────┬──────────────────────────────────────┐
+  │ Permission           │ Why Needed                           │
+  ├──────────────────────┼──────────────────────────────────────┤
+  │ s3:PutObject         │ Upload employee reports              │
+  │ s3:GetObject         │ Download reports                     │
+  │ s3:ListBucket        │ List report files                    │
+  │ logs:PutLogEvents    │ Write application logs               │
+  │ logs:CreateLogStream │ Create new log streams               │
+  │ secretsmanager:Get*  │ Read DB credentials                  │
+  │ rds-db:connect       │ Connect to RDS instance              │
+  └──────────────────────┴──────────────────────────────────────┘
+
+  NOT needed (and should NOT be granted):
+  - s3:DeleteBucket, s3:DeleteObject
+  - iam:*, ec2:TerminateInstances
+  - rds:DeleteDBInstance
+  - Any admin-level permissions
+
+CHECKLIST:
+  ✓ Use IAM Roles for EC2 (not access keys)
+  ✓ Scope resources to specific ARNs (not *)
+  ✓ Scope actions to specific operations (not s3:*)
+  ✓ Use conditions where possible (e.g., IP restrictions)
+  ✓ Review permissions quarterly
+  ✓ Enable CloudTrail to audit API calls
+================================================================

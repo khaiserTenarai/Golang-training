@@ -1,0 +1,40 @@
+================================================================
+  Task 12: High-Availability Architecture
+================================================================
+
+DESIGN:
+
+  Region: ap-south-1 (Mumbai)
+  AZs: ap-south-1a + ap-south-1b
+
+  ┌──────────────────────────────────────────────────────┐
+  │                     VPC                               │
+  │  AZ-a                              AZ-b              │
+  │  ┌────────────────┐    ┌────────────────┐            │
+  │  │ Public Subnet  │    │ Public Subnet  │            │
+  │  │   EC2 (App)    │    │   EC2 (App)    │            │
+  │  │   NAT Gateway  │    │                │            │
+  │  └────────────────┘    └────────────────┘            │
+  │         │                       │                    │
+  │         └─────── ALB ───────────┘                    │
+  │                                                      │
+  │  ┌────────────────┐    ┌────────────────┐            │
+  │  │ Private Subnet │    │ Private Subnet │            │
+  │  │ RDS Primary    │    │ RDS Standby    │            │
+  │  └────────────────┘    └────────────────┘            │
+  └──────────────────────────────────────────────────────┘
+
+HA COMPONENTS:
+  1. ALB — distributes traffic across 2 AZs
+  2. Auto Scaling Group — min 2, max 4 EC2 instances
+  3. RDS Multi-AZ — automatic failover to standby
+  4. S3 — 99.999999999% durability (11 9's)
+  5. Health checks — ALB checks /health every 30 seconds
+  6. CloudWatch alarms — alert on high CPU, 5xx errors
+
+FAILURE SCENARIOS:
+  - One EC2 dies → ALB routes to other; ASG launches replacement
+  - One AZ down → ALB routes to surviving AZ
+  - RDS primary fails → automatic failover to standby (2-3 min)
+  - S3 is regional → survives any single AZ failure
+================================================================
