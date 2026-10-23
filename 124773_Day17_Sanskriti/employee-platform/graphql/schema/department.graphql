@@ -1,0 +1,5 @@
+# SDL documentation for the Department module.
+type Department {
+  id: ID!
+  name: String!
+}

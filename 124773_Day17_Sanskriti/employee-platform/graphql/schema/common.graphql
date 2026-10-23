@@ -1,0 +1,7 @@
+# Shared pagination response.
+type EmployeePage {
+  total: Int!
+  page: Int!
+  limit: Int!
+  data: [Employee!]!
+}

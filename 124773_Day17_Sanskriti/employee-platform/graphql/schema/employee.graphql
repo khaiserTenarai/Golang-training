@@ -1,0 +1,16 @@
+# SDL documentation for the Employee module.
+type Employee {
+  id: ID!
+  name: String!
+  email: String!
+  age: Int!
+  salary: Float!
+  department: Department
+}
+input EmployeeInput {
+  name: String!
+  email: String!
+  age: Int!
+  salary: Float!
+  department_id: ID!
+}

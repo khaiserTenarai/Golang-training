@@ -1,0 +1,11 @@
+# Root schema documentation. The executable schema is assembled in graphql.go.
+type Query {
+  employees(page: Int, limit: Int, name: String, department: String, sortBy: String, order: String): EmployeePage!
+  employee(id: ID!): Employee
+  departments: [Department!]!
+}
+type Mutation {
+  createEmployee(input: EmployeeInput!): Employee
+  updateEmployee(id: ID!, input: EmployeeInput!): Employee
+  deleteEmployee(id: ID!): Boolean!
+}

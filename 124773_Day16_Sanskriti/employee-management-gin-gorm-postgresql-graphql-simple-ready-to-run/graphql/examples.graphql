@@ -1,0 +1,54 @@
+# 1. List employees (query + list query)
+query ListEmployees {
+  employees {
+    id
+    name
+    email
+    department { name }
+    salary
+  }
+}
+
+# 2. Fetch one employee. ID is a GraphQL scalar argument.
+query GetEmployee($employeeID: ID!) {
+  employee(id: $employeeID) {
+    id
+    name
+    email
+    department { name }
+    salary
+  }
+}
+# Variables JSON: { "employeeID": "1" }
+
+# 3. Create employee using an input type and variables.
+mutation CreateEmployee($input: EmployeeInput!) {
+  createEmployee(input: $input) {
+    id
+    name
+    email
+    department { name }
+    salary
+  }
+}
+# Variables JSON:
+# { "input": { "name": "Amit", "email": "amit@example.com", "department": "IT", "salary": 75000 } }
+
+# 4. Update employee using query arguments and variables.
+mutation UpdateEmployee($employeeID: ID!, $input: EmployeeInput!) {
+  updateEmployee(id: $employeeID, input: $input) {
+    id
+    name
+    email
+    department { name }
+    salary
+  }
+}
+# Variables JSON:
+# { "employeeID": "1", "input": { "name": "Amit Updated", "email": "amit.updated@example.com", "department": "HR", "salary": 85000 } }
+
+# 5. Delete employee using variables.
+mutation DeleteEmployee($employeeID: ID!) {
+  deleteEmployee(id: $employeeID)
+}
+# Variables JSON: { "employeeID": "1" }
