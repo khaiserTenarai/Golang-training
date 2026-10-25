@@ -1,0 +1,208 @@
+# Day 15 — Task 1: Gin Middleware Testing Using SoapUI
+
+Base URL: `http://localhost:8081`
+
+Start the Go application before sending requests from SoapUI:
+
+```
+go run .
+```
+
+## 1. API Testing Notes
+
+### Request 1: Check application health
+
+
+
+GET
+
+`http://localhost:8081/health`
+
+
+
+Method
+
+`GET`
+
+URL
+
+`http://localhost:8081/health`
+
+Request Body
+
+No body required.
+
+Expected Status
+
+`200 OK` when the database is healthy.
+
+Expected Response
+
+```
+{
+  "status": "healthy"
+}
+```
+
+### Request 2: Get all employees
+
+
+
+GET
+
+`http://localhost:8081/employees`
+
+
+
+Method: `GET`
+
+URL: `http://localhost:8081/employees`
+
+Request Body: None
+
+Expected Status: `200 OK`
+
+Expected Response:
+
+```
+[
+  {
+    "id": 1,
+    "name": "Sujith",
+    "email": "sujith@example.com",
+    "department": "IT",
+    "salary": 35000
+  }
+]
+```
+
+The response contains an array of employees. It may be empty if no employees exist.
+
+### Request 3: Create an employee
+
+
+
+POST
+
+`http://localhost:8081/employees`
+
+
+
+Method: `POST`
+
+URL: `http://localhost:8081/employees`
+
+Header: `Content-Type: application/json`
+
+Request Body:
+
+```
+{
+  "name": "Sujith",
+  "email": "sujith@example.com",
+  "department": "IT",
+  "salary": 35000
+}
+```
+
+Expected Status: `201 Created`
+
+Expected Response: The created employee, including its database-generated `id`.
+
+### Request 4: Get employee by ID
+
+
+
+GET
+
+`http://localhost:8081/employees/1`
+
+
+
+Method: `GET`
+
+URL: `http://localhost:8081/employees/1`
+
+Request Body: None
+
+Expected Status: `200 OK` if employee ID `1` exists; otherwise `404 Not Found`.
+
+### Request 5: Update an employee
+
+
+
+PUT
+
+`http://localhost:8081/employees/1`
+
+
+
+Method: `PUT`
+
+URL: `http://localhost:8081/employees/1`
+
+Header: `Content-Type: application/json`
+
+Request Body:
+
+```
+{
+  "name": "Sujith Reddy",
+  "email": "sujith.updated@example.com",
+  "department": "Development",
+  "salary": 45000
+}
+```
+
+Expected Status: `200 OK` if employee ID `1` exists.
+
+Expected Response: The updated employee details.
+
+### Request 6: Delete an employee
+
+
+
+DELETE
+
+`http://localhost:8081/employees/1`
+
+
+
+Method: `DELETE`
+
+URL: `http://localhost:8081/employees/1`
+
+Request Body: None
+
+Expected Status: `204 No Content` if employee ID `1` exists.
+
+Expected Response: No response body.
+
+## 2. How to enter the request in SoapUI
+
+1. Create a REST project or add a REST request.
+2. Enter the URL from the notes above.
+3. Select the corresponding HTTP method (`GET`, `POST`, `PUT`, or `DELETE`).
+4. For `POST` and `PUT`, open the request body editor and select JSON.
+5. Add the `Content-Type: application/json` header.
+6. Click Submit Request.
+7. Check the HTTP status code and response body.
+
+## 3. Verify Gin middleware logging
+
+After each request, check the terminal running your Go application.
+
+Example output:
+
+```
+Method: GET | Path: /health | Status: 200 | Duration: 1.2ms
+Method: GET | Path: /employees | Status: 200 | Duration: 2.3ms
+Method: POST | Path: /employees | Status: 201 | Duration: 4.1ms
+Method: GET | Path: /employees/1 | Status: 200 | Duration: 1.8ms
+Method: PUT | Path: /employees/1 | Status: 200 | Duration: 3.0ms
+Method: DELETE | Path: /employees/1 | Status: 204 | Duration: 2.0ms
+```
+
+These are sample logs; actual durations and statuses depend on the request and database state.
+
+Important: Run `POST` before testing the newly created employee. Use the returned employee ID in subsequent `GET`, `PUT`, and `DELETE` requests. Deleting an employee permanently removes that database record.

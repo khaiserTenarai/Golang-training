@@ -1,0 +1,224 @@
+# GraphQL Variables - Test Cases
+
+URL: `http://localhost:8081/graphql`
+
+## Test 1: Get Employee by ID Using a Variable
+
+**Query:**
+
+```graphql
+query GetEmployee($id: ID!) {
+  employee(id: $id) {
+    id
+    name
+    email
+    department
+    salary
+  }
+}
+```
+
+**Query Variables:**
+
+```json
+{
+  "id": "1"
+}
+```
+
+**Expected result:** Returns the employee with ID 1.
+
+---
+
+## Test 2: Get Another Employee
+
+Use the same query from Test 1.
+
+**Query Variables:**
+
+```json
+{
+  "id": "2"
+}
+```
+
+**Expected result:** Returns the employee with ID 2.
+
+---
+
+## Test 3: Get All Employees
+
+**Query:**
+
+```graphql
+query GetEmployees {
+  employees {
+    id
+    name
+    email
+    department
+    salary
+  }
+}
+```
+
+**Query Variables:** None required.
+
+**Expected result:** Returns all employees.
+
+---
+
+## Test 4: Create Employee Using Variables
+
+**Mutation:**
+
+```graphql
+mutation CreateEmployee($input: EmployeeInput!) {
+  createEmployee(input: $input) {
+    id
+    name
+    email
+    department
+    salary
+  }
+}
+```
+
+**Query Variables:**
+
+```json
+{
+  "input": {
+    "name": "Amit",
+    "email": "amit@example.com",
+    "department": "IT",
+    "salary": 75000
+  }
+}
+```
+
+**Expected result:** Creates the employee and returns the employee details, including the generated ID.
+
+---
+
+## Test 5: Update Employee Using Variables
+
+**Mutation:**
+
+```graphql
+mutation UpdateEmployee($id: ID!, $input: EmployeeInput!) {
+  updateEmployee(id: $id, input: $input) {
+    id
+    name
+    email
+    department
+    salary
+  }
+}
+```
+
+**Query Variables:**
+
+```json
+{
+  "id": "1",
+  "input": {
+    "name": "Amit Kumar",
+    "email": "amit@example.com",
+    "department": "Finance",
+    "salary": 80000
+  }
+}
+```
+
+**Expected result:** Updates employee 1 and returns the updated details.
+
+---
+
+## Test 6: Delete Employee Using a Variable
+
+**Mutation:**
+
+```graphql
+mutation DeleteEmployee($id: ID!) {
+  deleteEmployee(id: $id)
+}
+```
+
+**Query Variables:**
+
+```json
+{
+  "id": "1"
+}
+```
+
+**Expected result:**
+
+```json
+{
+  "data": {
+    "deleteEmployee": true
+  }
+}
+```
+
+---
+
+## Test 7: Test a Missing Required Variable
+
+**Query:**
+
+```graphql
+query GetEmployee($id: ID!) {
+  employee(id: $id) {
+    id
+    name
+  }
+}
+```
+
+**Query Variables:**
+
+```json
+{}
+```
+
+**Expected result:** GraphQL returns an error because the required `id` variable was not supplied.
+
+---
+
+## Test 8: Test an Invalid ID
+
+**Query:**
+
+```graphql
+query GetEmployee($id: ID!) {
+  employee(id: $id) {
+    id
+    name
+  }
+}
+```
+
+**Query Variables:**
+
+```json
+{
+  "id": "abc"
+}
+```
+
+**Expected result:** Your resolver should return an error because the ID must be a positive integer.
+
+---
+
+## How to Run the Tests
+
+1. Start your Go application with `go run .`.
+2. Open `http://localhost:8081/graphql`.
+3. Paste each query into the GraphiQL query editor.
+4. Open the **Query Variables** panel and paste the corresponding JSON.
+5. Click Execute and check the response.
+
+**Important:** Run the delete test last, and use an existing employee ID for update and delete. Test 8 assumes your GraphQL implementation accepts the string as an `ID` and passes it to your ID validation function.

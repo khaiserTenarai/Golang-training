@@ -1,0 +1,15 @@
+
+# Environment files
+.env
+.env.*
+.env.example
+
+# Text files
+*.txt
+
+# Executable files
+*.exe
+
+# Go checksum files
+*.sum
+s

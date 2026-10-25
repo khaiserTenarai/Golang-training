@@ -1,0 +1,39 @@
+EMPLOYEE MANAGEMENT - REST API TEST INPUTS
+
+Base URL: http://localhost:8081
+
+1. HEALTH CHECK
+GET http://localhost:8081/health
+
+2. GET ALL EMPLOYEES
+GET http://localhost:8081/employees
+
+3. CREATE EMPLOYEE
+POST http://localhost:8081/employees
+
+Body (JSON):
+{
+  "name": "Amit",
+  "email": "amit.rest@example.com",
+  "department": "IT",
+  "salary": 75000
+}
+
+4. GET EMPLOYEE BY ID
+GET http://localhost:8081/employees/1
+
+5. UPDATE EMPLOYEE
+PUT http://localhost:8081/employees/1
+
+Body (JSON):
+{
+  "name": "Amit Kumar",
+  "email": "amit.rest@example.com",
+  "department": "Engineering",
+  "salary": 80000
+}
+
+6. DELETE EMPLOYEE
+DELETE http://localhost:8081/employees/1
+
+Note: Replace 1 with the actual employee ID returned by the create request. Send these requests using Postman or another HTTP client.
