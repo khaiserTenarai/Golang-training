@@ -1,0 +1,70 @@
+version: 0.2
+
+env:
+  variables:
+    GO_VERSION: "1.26.9"
+    GOOS: "linux"
+    GOARCH: "amd64"
+    CGO_ENABLED: "0"
+
+phases:
+  install:
+    commands:
+      - echo "Installing Go ${GO_VERSION}..."
+      - curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" -o /tmp/go.tar.gz
+      - rm -rf "$HOME/go-sdk"
+      - mkdir -p "$HOME/go-sdk"
+      - tar -C "$HOME/go-sdk" -xzf /tmp/go.tar.gz
+      - export PATH="$HOME/go-sdk/go/bin:$PATH"
+      - go version
+
+  pre_build:
+    commands:
+      - export PATH="$HOME/go-sdk/go/bin:$PATH"
+      - echo "Downloading Go dependencies..."
+      - go mod download
+      - echo "Checking formatting..."
+      - |
+        UNFORMATTED=$(gofmt -l $(find . -type f -name '*.go' -not -path './vendor/*'))
+        if [ -n "$UNFORMATTED" ]; then
+          echo "These Go files need gofmt:"
+          echo "$UNFORMATTED"
+          exit 1
+        fi
+
+  build:
+    commands:
+      - export PATH="$HOME/go-sdk/go/bin:$PATH"
+      - echo "Running tests..."
+      - go test ./...
+      - echo "Running go vet..."
+      - go vet ./...
+      - echo "Building microservices..."
+      - mkdir -p build
+      - go build -o build/api-gateway ./cmd/api-gateway
+      - go build -o build/auth-service ./cmd/auth-service
+      - go build -o build/product-service ./cmd/product-service
+      - go build -o build/order-service ./cmd/order-service
+      - go build -o build/check-db-connected ./cmd/check-db-connected
+      - go build -o build/load-test ./cmd/load-test
+
+  post_build:
+    commands:
+      - echo "Build completed successfully."
+      - ls -lh build/
+
+artifacts:
+  base-directory: build
+  files:
+    - api-gateway
+    - auth-service
+    - product-service
+    - order-service
+    - check-db-connected
+    - load-test
+  discard-paths: yes
+
+cache:
+  paths:
+    - '/root/.cache/go-build/**/*'
+    - '/root/go/pkg/mod/**/*'
