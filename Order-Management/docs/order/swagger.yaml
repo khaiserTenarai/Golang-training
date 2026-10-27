@@ -1,0 +1,163 @@
+basePath: /
+definitions:
+  dto.CreateOrderRequest:
+    properties:
+      customerId:
+        type: integer
+      productId:
+        type: integer
+      quantity:
+        type: integer
+    required:
+    - customerId
+    - productId
+    - quantity
+    type: object
+  dto.UpdateOrderStatusRequest:
+    properties:
+      status:
+        type: string
+    required:
+    - status
+    type: object
+host: localhost:8082
+info:
+  contact: {}
+  description: REST and GraphQL API for managing orders.
+  title: Order Service API
+  version: "1.0"
+paths:
+  /orders:
+    get:
+      description: Returns all orders.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of orders
+          schema:
+            items:
+              additionalProperties: true
+              type: object
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: List all orders
+      tags:
+      - Orders
+    post:
+      consumes:
+      - application/json
+      description: Creates an order after validating the customer, product, and quantity.
+      parameters:
+      - description: Order details
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateOrderRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Order created successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid request or order creation failed
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Create an order
+      tags:
+      - Orders
+  /orders/{id}:
+    get:
+      description: Returns one order using its ID.
+      parameters:
+      - description: Order ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Order details
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid order ID
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Order not found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get an order by ID
+      tags:
+      - Orders
+  /orders/{id}/status:
+    patch:
+      consumes:
+      - application/json
+      description: Updates an order status, for example to CONFIRMED or CANCELLED.
+      parameters:
+      - description: Order ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: New order status
+        in: body
+        name: status
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateOrderStatusRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Order status updated successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid request or status
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Order not found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Update order status
+      tags:
+      - Orders
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
