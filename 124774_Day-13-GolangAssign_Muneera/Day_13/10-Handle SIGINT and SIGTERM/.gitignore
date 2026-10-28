@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+
+employee-api
+*.exe
+.vscode/
+.idea/
+.DS_Store

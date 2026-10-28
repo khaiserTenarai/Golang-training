@@ -1,0 +1,10 @@
+
+# Environment files
+.env
+
+
+# Executable files
+*.exe
+
+# Go checksum files
+*.sum
