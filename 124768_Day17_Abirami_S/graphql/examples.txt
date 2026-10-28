@@ -1,0 +1,98 @@
+GRAPHQL TEST EXAMPLES
+
+1. Query all employees
+
+query {
+  employees(page: 1, pageSize: 5) {
+    items {
+      id
+      name
+      email
+      salary
+      department {
+        id
+        name
+      }
+    }
+    total
+    page
+    pageSize
+    totalPages
+  }
+}
+
+2. Query one employee
+
+query {
+  employee(id: 1) {
+    id
+    name
+    email
+    salary
+    department {
+      id
+      name
+    }
+  }
+}
+
+3. Filter and sort
+
+query {
+  employees(
+    page: 1
+    pageSize: 10
+    name: "a"
+    sortBy: "name"
+    sortOrder: "desc"
+  ) {
+    items {
+      id
+      name
+      email
+    }
+    total
+  }
+}
+
+4. Create employee - admin token required
+
+mutation {
+  createEmployee(
+    input: {
+      name: "Arun"
+      email: "arun@example.com"
+      salary: 45000
+      departmentId: 1
+    }
+  ) {
+    id
+    name
+    email
+  }
+}
+
+5. Update employee - admin token required
+
+mutation {
+  updateEmployee(
+    id: 1
+    input: {
+      name: "Updated"
+      email: "updated@example.com"
+      salary: 50000
+      departmentId: 2
+    }
+  ) {
+    id
+    name
+    email
+    salary
+  }
+}
+
+6. Delete employee - admin token required
+
+mutation {
+  deleteEmployee(id: 1)
+}

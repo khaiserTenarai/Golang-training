@@ -1,0 +1,18 @@
+query GetEmployee($id: ID!) {
+  employee(id: $id) {
+    id
+    name
+    email
+    age
+    salary
+    department {
+      id
+      name
+    }
+  }
+}
+
+Variables:
+{
+  "id": "1"
+}

@@ -1,0 +1,25 @@
+mutation UpdateEmployee($id: ID!, $input: EmployeeInput!) {
+  updateEmployee(id: $id, input: $input) {
+    id
+    name
+    email
+    age
+    salary
+    department {
+      id
+      name
+    }
+  }
+}
+
+Variables:
+{
+  "id": "1",
+  "input": {
+    "name": "Abirami S",
+    "email": "abirami@example.com",
+    "age": 23,
+    "salary": 50000,
+    "departmentId": "1"
+  }
+}

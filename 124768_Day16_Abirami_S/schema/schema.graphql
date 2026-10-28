@@ -1,0 +1,65 @@
+mutation {
+  createEmployee(
+    input: {
+      name: "Priya"
+      email: "priya@gmail.com"
+      age: 23
+      salary: 48000
+      departmentId: "1"
+    }
+  ) {
+    id
+    name
+    email
+    age
+    salary
+    department {
+      id
+      name
+    }
+  }
+}
+
+Using GraphQL variables
+
+mutation CreateEmployee($input: EmployeeInput!) {
+  createEmployee(input: $input) {
+    id
+    name
+    email
+    age
+    salary
+    department {
+      id
+      name
+    }
+  }
+}
+
+query {
+  employee(id: "1") {
+    id
+    name
+    email
+    age
+    salary
+    department {
+      id
+      name
+    }
+  }
+}
+
+query {
+  employees {
+    id
+    name
+    email
+    age
+    salary
+    department {
+      id
+      name
+    }
+  }
+}

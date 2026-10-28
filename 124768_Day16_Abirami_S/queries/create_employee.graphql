@@ -1,0 +1,24 @@
+mutation CreateEmployee($input: EmployeeInput!) {
+  createEmployee(input: $input) {
+    id
+    name
+    email
+    age
+    salary
+    department {
+      id
+      name
+    }
+  }
+}
+
+Variables:
+{
+  "input": {
+    "name": "Priya",
+    "email": "priya@example.com",
+    "age": 23,
+    "salary": 48000,
+    "departmentId": "1"
+  }
+}
