@@ -1,0 +1,27 @@
+# 1. Fetch Employee Details by ID
+query GetEmployeeByID {
+  employee(id: 1) {
+    id
+    first_name
+    last_name
+    email
+    department_id
+    status
+  }
+}
+
+# 2. Onboard New Employee Mutation
+mutation CreateNewEmployee {
+  createEmployee(input: {
+    first_name: "John",
+    last_name: "Doe",
+    email: "john.doe@company.com",
+    department_id: 1
+  }) {
+    id
+    first_name
+    last_name
+    status
+  }
+}
+
